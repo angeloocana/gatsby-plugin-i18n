@@ -15,7 +15,7 @@ src/pages/blog/gatsby-i18n.pt.md | /pt/gatsby-i18n
 
 ## Install
 ```bash
-  npm install gatsby-plugin-antd --save
+  npm install gatsby-plugin-i18n --save
 ```
 
 ## How to use
