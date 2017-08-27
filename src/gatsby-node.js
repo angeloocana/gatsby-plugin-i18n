@@ -88,8 +88,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 const getSlugAndLang = (defaultLangKey, fileAbsolutePath) => {
   try {
     let filePath = fileAbsolutePath.split('/pages')[1];
-    if(!filePath) filePath = fileAbsolutePath.split('/.cache')[1];
-
     const fileName = filePath.split('.');
     const langKey = fileName.length === 3 ? fileName[1] : defaultLangKey;
     const slug = fileName.length === 3
@@ -148,7 +146,8 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 
 // Add context.slug and .langKey for react props
 exports.onCreatePage = ({ page, boundActionCreators }) => {
-  if(page.context.slug) return null;
+  if(page.context.slug || page.componentPath.indexOf('/pages/') === -1)
+    return null;
 
   const { createPage, deletePage } = boundActionCreators;
 
