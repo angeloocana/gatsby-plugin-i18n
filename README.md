@@ -1,7 +1,11 @@
 # gatsby-plugin-i18ns
-Add different languages (i18n) for Gatsby
+Add different languages (i18n) for Gatsby.
+
+
 
 ## Examples
+
+https://angeloocana.com (source)https://github.com/angeloocana/angeloocana
 
 file | url
 -- | --
