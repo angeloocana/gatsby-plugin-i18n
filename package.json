@@ -1,0 +1,32 @@
+{
+  "name": "gatsby-plugin-i18n",
+  "version": "0.0.1",
+  "description": "Multi language feature for Gatsby",
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/angeloocana/gatsby-plugin-i18n"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "i18n"
+  ],
+  "author": "angeloocana.com",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-import": "^1.3.1",
+    "bluebird": "^3.5.0",
+    "graphql": "^0.11.1",
+    "lodash-webpack-plugin": "^0.11.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "readme": "README.md",
+  "scripts": {
+    "build": "babel src --out-dir .",
+    "watch": "babel -w src --out-dir ."
+  }
+}
