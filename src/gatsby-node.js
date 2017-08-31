@@ -1,16 +1,25 @@
-const _ = require('lodash');
-const Promise = require('bluebird');
-const path = require('path');
-const {
-  GraphQLString
-} = require('graphql');
+import _ from 'lodash';
+import Promise from 'bluebird';
+import path from 'path';
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
+const defaultOptions = {
+  postPage: 'src/templates/blog-post.js',
+  tagPage: 'src/templates/tag-page.js',
+  tagsUrl: '/tags/',
+  langKeyForNull: 'any',
+  langKeyDefault: 'en'
+};
+
+exports.createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
   const { createPage } = boundActionCreators;
+  const options = {
+    ...defaultOptions,
+    ...pluginOptions
+  };
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('src/templates/blog-post.js');
-    const tagPages = path.resolve('src/templates/tag-page.js');
+    const postPage = path.resolve(options.postPage);
+    const tagPage = path.resolve(options.tagPage);
     graphql(
       `
         {
@@ -33,57 +42,61 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
       `
     ).then(result => {
-      if (result.errors) {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-        console.log('gatsby-node error:');
-        console.log(result.errors);
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
-        resolve();
-        // reject(result.errors);
-      }
+      try {
 
-      // Create blog posts pages.
-      _.each(result.data.allMarkdownRemark.edges, edge => {
-        const path = edge.node.fields.slug;
-        const langKey = edge.node.fields.langKey;
-        createPage({
-          path, // required
-          component: blogPost,
-          context: {
-            path,
-            langKey
-          }
-        });
-      });
+        if (result.errors) {
+          throw result.errors;          
+        }
 
-      const langTags = result.data.allMarkdownRemark.edges.reduce((tags, edge) => {
-        const langKey = edge.node.fields.langKey;
-        tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
-        return tags;
-      }, {});
-
-      Object.keys(langTags).forEach(langKey => {
-        const tags = _.uniq(langTags[langKey])
-          .filter(tag => tag && tag !== '');
-
-        tags.forEach(tag => {
-          const tagPath = `/${langKey}/tags/${_.kebabCase(tag)}/`;
+        // Create blog posts pages.
+        _.each(result.data.allMarkdownRemark.edges, edge => {
+          const path = edge.node.fields.slug;
+          const langKey = edge.node.fields.langKey;
           createPage({
-            path: tagPath,
-            component: tagPages,
+            path, // required
+            component: postPage,
             context: {
-              tag,
+              path,
               langKey
-            },
+            }
           });
         });
-      });
-      resolve();
+
+        const langTags = result.data.allMarkdownRemark.edges.reduce((tags, edge) => {
+          const langKey = edge.node.fields.langKey;
+          tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
+          return tags;
+        }, {});
+
+        Object.keys(langTags).forEach(langKey => {
+          const tags = _.uniq(langTags[langKey])
+            .filter(tag => tag && tag !== '');
+
+          tags.forEach(tag => {
+            const tagPath = `/${langKey}${options.tagsUrl}${_.kebabCase(tag)}/`;
+            createPage({
+              path: tagPath,
+              component: tagPage,
+              context: {
+                tag,
+                langKey
+              },
+            });
+          });
+        });
+
+        resolve();
+
+      } catch (e) {
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+        console.log('i18n createPage error:');
+        console.log(e);
+        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+        reject(e);
+      }
     });
   });
 };
-
-//exports.postBuild = require('./post-build')
 
 const getSlugAndLang = (defaultLangKey, fileAbsolutePath) => {
   try {
@@ -105,7 +118,13 @@ const getSlugAndLang = (defaultLangKey, fileAbsolutePath) => {
 };
 
 // Add custom url pathname for blog posts.
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
+exports.onCreateNode = ({ node, boundActionCreators, getNode }, pluginOptions) => {
+
+  const options = {
+    ...defaultOptions,
+    ...pluginOptions
+  };
+
   const { createNodeField } = boundActionCreators;
 
   if (node.internal.type === 'File') {
@@ -116,7 +135,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     node.internal.type === 'MarkdownRemark' &&
     typeof node.slug === 'undefined'
   ) {
-    const slugAndLang = getSlugAndLang('any', node.fileAbsolutePath);
+    const slugAndLang = getSlugAndLang(options.langKeyForNull, node.fileAbsolutePath);
 
     createNodeField({
       node,
@@ -135,7 +154,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
         tag => {
           return {
             tag,
-            link: `/${slugAndLang.langKey}/tags/${_.kebabCase(tag)}/`
+            link: `/${slugAndLang.langKey}${options.tagsUrl}${_.kebabCase(tag)}/`
           };
         }
       );
@@ -145,14 +164,18 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 };
 
 // Add context.slug and .langKey for react props
-exports.onCreatePage = ({ page, boundActionCreators }) => {
-  if(page.context.slug || page.componentPath.indexOf('/pages/') === -1)
-    return null;
+exports.onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
+  if (page.context.slug || page.componentPath.indexOf('/pages/') === -1) return null;
+
+  const options = {
+    ...defaultOptions,
+    ...pluginOptions
+  };
 
   const { createPage, deletePage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    const slugAndLang = getSlugAndLang('en', page.componentPath);
+    const slugAndLang = getSlugAndLang(options.langKeyDefault, page.componentPath);
     const oldPath = page.path;
     page.path = slugAndLang.slug;
     page.context.slug = slugAndLang.slug;
