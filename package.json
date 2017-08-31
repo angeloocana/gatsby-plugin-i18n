@@ -6,7 +6,8 @@
     "lint": "./node_modules/.bin/eslint --fix ./src",
     "prebuild": "yarn run lint",
     "build": "babel src --out-dir .",
-    "watch": "babel -w src --out-dir ."    
+    "watch": "babel -w src --out-dir .",
+    "test": "yarn run build" // TODO: Add jest or mocha
   },
   "respository": {
     "type": "git",
