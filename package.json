@@ -7,7 +7,7 @@
     "prebuild": "yarn run lint",
     "build": "babel src --out-dir .",
     "watch": "babel -w src --out-dir .",
-    "test": "yarn run build" // TODO: Add jest or mocha
+    "test": "yarn run build"
   },
   "respository": {
     "type": "git",
