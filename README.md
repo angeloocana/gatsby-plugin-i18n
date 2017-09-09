@@ -1,4 +1,4 @@
-# gatsby-plugin-i18ns
+# gatsby-plugin-i18n
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b3a917c0cb9433cb12eec33b989c723)](https://www.codacy.com/app/angeloocana/gatsby-plugin-i18n?utm_source=github.com&utm_medium=referral&utm_content=angeloocana/gatsby-plugin-i18n&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/angeloocana/gatsby-plugin-i18n.svg)](https://travis-ci.org/angeloocana/gatsby-plugin-i18n)
@@ -38,8 +38,6 @@ plugins: [
     resolve: 'gatsby-plugin-i18n',
     options: { // Default options
       postPage: 'src/templates/blog-post.js',
-      tagPage: 'src/templates/tag-page.js',
-      tagsUrl: '/tags/',
       langKeyForNull: 'any',
       langKeyDefault: 'en'
     }

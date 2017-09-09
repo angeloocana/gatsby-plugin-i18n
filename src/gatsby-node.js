@@ -1,13 +1,33 @@
 import _ from 'lodash';
 import Promise from 'bluebird';
 import path from 'path';
+import { getSlugAndLang } from 'ptz-i18n';
 
 const defaultOptions = {
   postPage: 'src/templates/blog-post.js',
-  tagPage: 'src/templates/tag-page.js',
-  tagsUrl: '/tags/',
   langKeyForNull: 'any',
-  langKeyDefault: 'en'
+  langKeyDefault: 'en',
+  query: `
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug,
+              langKey
+            }
+          }
+        }
+      }
+    }
+  `
+};
+
+const logError = (e) => {
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+  console.log('i18n error:');
+  console.log(e);
+  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 };
 
 exports.createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
@@ -19,33 +39,12 @@ exports.createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve(options.postPage);
-    const tagPage = path.resolve(options.tagPage);
-    graphql(
-      `
-        {
-          allMarkdownRemark(
-            limit: 1000,
-            filter: { frontmatter: { draft: { ne: true } } },
-          ) {
-            edges {
-              node {
-                fields {
-                  slug,
-                  langKey
-                }
-                frontmatter {
-                  tags
-                }
-              }
-            }
-          }
-        }
-      `
-    ).then(result => {
+
+    graphql(options.query).then(result => {
       try {
 
         if (result.errors) {
-          throw result.errors;          
+          throw result.errors;
         }
 
         // Create blog posts pages.
@@ -62,59 +61,14 @@ exports.createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
           });
         });
 
-        const langTags = result.data.allMarkdownRemark.edges.reduce((tags, edge) => {
-          const langKey = edge.node.fields.langKey;
-          tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
-          return tags;
-        }, {});
-
-        Object.keys(langTags).forEach(langKey => {
-          const tags = _.uniq(langTags[langKey])
-            .filter(tag => tag && tag !== '');
-
-          tags.forEach(tag => {
-            const tagPath = `/${langKey}${options.tagsUrl}${_.kebabCase(tag)}/`;
-            createPage({
-              path: tagPath,
-              component: tagPage,
-              context: {
-                tag,
-                langKey
-              },
-            });
-          });
-        });
-
         resolve();
 
       } catch (e) {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-        console.log('i18n createPage error:');
-        console.log(e);
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+        logError(e);
         reject(e);
       }
     });
   });
-};
-
-const getSlugAndLang = (defaultLangKey, fileAbsolutePath) => {
-  try {
-    let filePath = fileAbsolutePath.split('/pages')[1];
-    const fileName = filePath.split('.');
-    const langKey = fileName.length === 3 ? fileName[1] : defaultLangKey;
-    const slug = fileName.length === 3
-      ? `/${langKey}${fileName[0].replace('/index', '')}/`
-      : `${fileName[0].replace('/index', '')}/`;
-
-    return {
-      slug,
-      langKey
-    };
-  } catch (e) {
-    console.log('fileAbsolutePath', fileAbsolutePath);
-    throw e;
-  }
 };
 
 // Add custom url pathname for blog posts.
@@ -148,18 +102,6 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }, pluginOptions) =
       name: 'slug',
       value: slugAndLang.slug,
     });
-
-    if (node.frontmatter.tags) {
-      const tagSlugs = node.frontmatter.tags.map(
-        tag => {
-          return {
-            tag,
-            link: `/${slugAndLang.langKey}${options.tagsUrl}${_.kebabCase(tag)}/`
-          };
-        }
-      );
-      createNodeField({ node, name: 'tagSlugs', value: tagSlugs });
-    }
   }
 };
 
