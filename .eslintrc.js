@@ -1,24 +1,27 @@
 module.exports = {
     "env": {
         "commonjs": true,
-        "es6": true
+        "es6": true,
+        "jest/globals": true
     },
     "extends": [
-        "standard",
-        "standard-react"
+        "standard"
     ],
     "parserOptions": {
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
+            "experimentalObjectRestSpread": true
         },
         "sourceType": "module"
     },
     "parser": "babel-eslint",
     "plugins": [
-        "react"
+        "jest"
     ],
     "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/valid-expect": "error",
         "accessor-pairs": "error",
         "array-bracket-newline": "off",
         "array-bracket-spacing": [
@@ -93,8 +96,6 @@ module.exports = {
         "id-match": "error",
         "indent": [2, 2],
         "indent-legacy": "off",
-        "react/jsx-indent": [2, 2],
-        "react/jsx-indent-props": [2, 2],
         "init-declarations": "off",
         "jsx-quotes": ["error", "prefer-double"],
         "key-spacing": "error",

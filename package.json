@@ -7,7 +7,8 @@
     "prebuild": "yarn run lint",
     "build": "babel src --out-dir .",
     "watch": "babel -w src --out-dir .",
-    "test": "yarn run build"
+    "pretest": "yarn run build",
+    "test": "jest && codecov"
   },
   "respository": {
     "type": "git",
@@ -21,23 +22,26 @@
   "author": "angeloocana.com",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.5.0",
     "graphql": "^0.11.1",
-    "ptz-i18n": "^0.0.6"
+    "ptz-i18n": "^0.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "codecov": "^2.3.0",
     "eslint": "^4.4.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.0.2",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^21.0.2",
+    "ptz-assert": "^1.6.8"
   },
   "babel": {
     "presets": [
@@ -47,5 +51,9 @@
       "transform-object-rest-spread"
     ]
   },
-  "readme": "README.md"
+  "readme": "README.md",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }
