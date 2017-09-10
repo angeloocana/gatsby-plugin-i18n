@@ -1,18 +1,9 @@
-import {
-  createPages,
-  onCreateNode,
-  onCreatePage
-} from './gatsby-node';
-import { ok } from 'ptz-assert';
+import * as Api from './gatsby-node';
+import { deepEqual } from 'ptz-assert';
 
 describe('gatsby-node', () => {
-  it('exports createPages', () => {
-    ok(createPages);
-  });
-  it('exports onCreateNode', () => {
-    ok(onCreateNode);
-  });
-  it('exports onCreatePage', () => {
-    ok(onCreatePage);
+  it('export only known functions', () => {
+    const fns = ['createPages', 'onCreateNode', 'onCreatePage'];
+    deepEqual(Object.keys(Api), fns);
   });
 });

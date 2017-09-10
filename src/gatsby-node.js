@@ -1,3 +1,3 @@
-export * from './createPages';
-export * from './onCreateNode';
-export * from './onCreatePage';
+export {createPages} from './createPages';
+export {onCreateNode} from './onCreateNode';
+export {onCreatePage} from './onCreatePage';
