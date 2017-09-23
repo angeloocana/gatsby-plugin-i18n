@@ -31,16 +31,34 @@ src/pages/blog/gatsby-i18n.pt.md | /pt/gatsby-i18n
 ## How to use
 1. Include the plugin in your `gatsby-config.js` file.
 
+if you are NOT using **markdownRemark** you can remove the prop.
+
 ```javascript
 // in gatsby-config.js
 plugins: [
   {
-    resolve: 'gatsby-plugin-i18n',
-    options: { // Default options
-      postPage: 'src/templates/blog-post.js',
-      langKeyForNull: 'any',
-      langKeyDefault: 'en'
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyForNull: 'any',
+        langKeyDefault: 'en',
+        markdownRemark: {
+          postPage: 'src/templates/blog-post.js',
+          query: `
+          {
+              allMarkdownRemark {
+                  edges {
+                  node {
+                      fields {
+                      slug,
+                      langKey
+                      }
+                  }
+                  }
+              }
+          }
+          `
+        }
+      }
     }
-  }
 ]
 ```
