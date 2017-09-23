@@ -30,9 +30,9 @@ const createPages = (_, pluginOptions) => {
   const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    const postPage = path.resolve(options.postPage);
+    const postPage = path.resolve(options.markdownRemark.postPage);
 
-    graphql(options.query).then(result => {
+    graphql(options.markdownRemark.query).then(result => {
       try {
 
         if (result.errors) {
