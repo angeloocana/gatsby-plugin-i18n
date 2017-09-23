@@ -1,19 +1,22 @@
-export default {
-  postPage: 'src/templates/blog-post.js',
+export default {  
   langKeyForNull: 'any',
   langKeyDefault: 'en',
-  query: `
-    {
-        allMarkdownRemark {
-            edges {
-            node {
-                fields {
-                slug,
-                langKey
-                }
-            }
-            }
-        }
-    }
-    `
+  // Example of markdownRemark
+  // markdownRemark: {
+  //   postPage: 'src/templates/blog-post.js',
+  //   query: `
+  //     {
+  //         allMarkdownRemark {
+  //             edges {
+  //             node {
+  //                 fields {
+  //                 slug,
+  //                 langKey
+  //                 }
+  //             }
+  //             }
+  //         }
+  //     }
+  //     `
+  // }
 };

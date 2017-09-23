@@ -16,12 +16,18 @@ const createPageForEach = (createPage, postPage) => forEach(edge => {
   });
 });
 
-const createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
-  const { createPage } = boundActionCreators;
+const createPages = (_, pluginOptions) => {  
+  if (!pluginOptions.markdownRemark) {
+    return null;
+  }
+
   const options = {
     ...defaultOptions,
     ...pluginOptions
   };
+
+  const { graphql, boundActionCreators } = _;
+  const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve(options.postPage);

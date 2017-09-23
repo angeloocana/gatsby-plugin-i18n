@@ -1,11 +1,27 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.default = {
-    postPage: 'src/templates/blog-post.js',
-    langKeyForNull: 'any',
-    langKeyDefault: 'en',
-    query: '\n    {\n        allMarkdownRemark {\n            edges {\n            node {\n                fields {\n                slug,\n                langKey\n                }\n            }\n            }\n        }\n    }\n    '
+  langKeyForNull: 'any',
+  langKeyDefault: 'en'
+  // Example of markdownRemark
+  // markdownRemark: {
+  //   postPage: 'src/templates/blog-post.js',
+  //   query: `
+  //     {
+  //         allMarkdownRemark {
+  //             edges {
+  //             node {
+  //                 fields {
+  //                 slug,
+  //                 langKey
+  //                 }
+  //             }
+  //             }
+  //         }
+  //     }
+  //     `
+  // }
 };

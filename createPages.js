@@ -38,12 +38,17 @@ var createPageForEach = function createPageForEach(createPage, postPage) {
   });
 };
 
-var createPages = function createPages(_ref, pluginOptions) {
-  var graphql = _ref.graphql,
-      boundActionCreators = _ref.boundActionCreators;
-  var createPage = boundActionCreators.createPage;
+var createPages = function createPages(_, pluginOptions) {
+  if (!pluginOptions.markdownRemark) {
+    return null;
+  }
 
   var options = _extends({}, _defaultOptions2.default, pluginOptions);
+
+  var graphql = _.graphql,
+      boundActionCreators = _.boundActionCreators;
+  var createPage = boundActionCreators.createPage;
+
 
   return new Promise(function (resolve, reject) {
     var postPage = _path2.default.resolve(options.postPage);
