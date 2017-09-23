@@ -1,4 +1,18 @@
-/gatsby-node.js
+createPages.js
+createPages.test.js
+
+defaultOptions.js
+
+gatsby-node.js
+gatsby-node.test.js
+
+logError.js
+
+onCreateNode.js
+onCreateNode.test.js
+
+onCreatePage.js
+onCreatePage.test.js
 
 # Logs
 logs
