@@ -5,8 +5,8 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix ./src",
     "prebuild": "yarn run lint",
-    "build": "babel src --out-dir .",
-    "watch": "babel -w src --out-dir .",
+    "build": "babel src --out-dir . --ignore '**/*.test.js'",
+    "watch": "babel -w src --out-dir . --ignore '**/*.test.js'",
     "pretest": "yarn run build",
     "test": "jest && codecov",
     "test:open": "opn ./coverage/lcov-report/index.html"
