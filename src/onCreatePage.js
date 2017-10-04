@@ -1,5 +1,5 @@
 import defaultOptions from './defaultOptions';
-import { getSlugAndLang } from 'ptz-i18n';
+import { getNewPage } from './getNewPage';
 
 /**
  * Add context.slug and .langKey for react props
@@ -9,24 +9,21 @@ import { getSlugAndLang } from 'ptz-i18n';
  */
 const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
   if (page.context.slug || page.componentPath.indexOf('/pages/') === -1) return null;
-  
+
   const options = {
     ...defaultOptions,
     ...pluginOptions
   };
-  
+
   const { createPage, deletePage } = boundActionCreators;
-  
+
   return new Promise((resolve, reject) => {
-    const slugAndLang = getSlugAndLang(options.langKeyDefault, page.componentPath);
-    const oldPath = page.path;
-    page.path = slugAndLang.slug;
-    page.context.slug = slugAndLang.slug;
-    page.context.langKey = slugAndLang.langKey;
-  
-    deletePage({ path: oldPath });
-    createPage(page);
-  
+
+    const newPage = getNewPage(page, options);
+
+    deletePage({ path: page.path });
+    createPage(newPage);
+
     resolve();
   });
 };
