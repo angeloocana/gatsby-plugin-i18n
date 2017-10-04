@@ -1,22 +1,9 @@
 import defaultOptions from './defaultOptions';
-import { forEach } from 'ramda';
 import logError from './logError';
 import path from 'path';
+import getMarkdownPage from './getMarkdownPage';
 
-const createPageForEach = (createPage, postPage) => forEach(edge => {
-  const path = edge.node.fields.slug;
-  const langKey = edge.node.fields.langKey;
-  createPage({
-    path, // required
-    component: postPage,
-    context: {
-      path,
-      langKey
-    }
-  });
-});
-
-const createPages = (_, pluginOptions) => {  
+const createPages = (_, pluginOptions) => {
   if (!pluginOptions.markdownRemark) {
     return null;
   }
@@ -39,7 +26,9 @@ const createPages = (_, pluginOptions) => {
           throw result.errors;
         }
 
-        createPageForEach(createPage, postPage)(result.data.allMarkdownRemark.edges);
+        result.data.allMarkdownRemark.edges
+          .map(getMarkdownPage(options, postPage))
+          .map(page => createPage(page));
 
         resolve();
 
@@ -52,6 +41,5 @@ const createPages = (_, pluginOptions) => {
 };
 
 export {
-  createPageForEach,
   createPages
 };
