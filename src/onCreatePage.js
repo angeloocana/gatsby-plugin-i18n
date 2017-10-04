@@ -8,7 +8,9 @@ import { getNewPage } from './getNewPage';
  * @returns {Promise} Promise
  */
 const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
-  if (page.context.slug || page.componentPath.indexOf('/pages/') === -1) return null;
+  if (page.context.slug || page.componentPath.indexOf('/pages/') === -1) {
+    return;
+  }
 
   const options = {
     ...defaultOptions,
@@ -17,15 +19,10 @@ const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
 
   const { createPage, deletePage } = boundActionCreators;
 
-  return new Promise((resolve, reject) => {
+  const newPage = getNewPage(page, options);
 
-    const newPage = getNewPage(page, options);
-
-    deletePage({ path: page.path });
-    createPage(newPage);
-
-    resolve();
-  });
+  deletePage({ path: page.path });
+  createPage(newPage);
 };
 
 export {
