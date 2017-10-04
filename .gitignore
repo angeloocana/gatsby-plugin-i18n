@@ -6,6 +6,12 @@ defaultOptions.js
 gatsby-node.js
 gatsby-node.test.js
 
+getMarkdownPage.js
+getMarkdownPage.test.js
+
+getNewPage.js
+getNewPage.test.js
+
 logError.js
 
 onCreateNode.js
