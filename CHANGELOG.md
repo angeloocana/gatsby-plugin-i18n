@@ -1,5 +1,10 @@
 ## master
 
+## 0.3.2 (October 04, 2017)
+
+* 100% test coverage.
+* Upgrade dependencies.
+
 ## 0.3.1 (October 04, 2017)
 
 * Add layout option to markdownPages.
