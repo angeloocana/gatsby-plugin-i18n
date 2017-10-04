@@ -1,5 +1,9 @@
 ## master
 
+## 0.3.1 (October 04, 2017)
+
+* Add layout option to markdownPages.
+
 ## 0.3.0 (October 04, 2017)
 
 * Add useLangKeyLayout option.
