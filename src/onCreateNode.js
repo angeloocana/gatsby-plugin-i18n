@@ -1,5 +1,4 @@
 import defaultOptions from './defaultOptions';
-import path from 'path';
 import { getSlugAndLang } from 'ptz-i18n';
 
 /**
@@ -18,14 +17,19 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
   const { createNodeField } = boundActionCreators;
 
   if (node.internal.type === 'File') {
-    const parsedFilePath = path.parse(node.absolutePath);
-    const slug = `/${parsedFilePath.dir.split('---')[1]}/`;
-    createNodeField({ node, name: 'slug', value: slug });
+    const slugAndLang = getSlugAndLang(options.langKeyDefault, node.absolutePath);
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slugAndLang.slug
+    });
+
   } else if (
     node.internal.type === 'MarkdownRemark' &&
-        typeof node.slug === 'undefined'
+    typeof node.slug === 'undefined'
   ) {
-    const slugAndLang = getSlugAndLang(options.langKeyForNull, node.fileAbsolutePath);
+    var slugAndLang = getSlugAndLang(options.langKeyDefault, node.fileAbsolutePath);
 
     createNodeField({
       node,
@@ -36,7 +40,7 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
     createNodeField({
       node,
       name: 'slug',
-      value: slugAndLang.slug,
+      value: slugAndLang.slug
     });
   }
 };
