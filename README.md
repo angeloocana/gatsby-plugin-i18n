@@ -15,8 +15,7 @@ Add different languages (i18n) for Gatsby.
 
 Websites built with Gatsby i18n:
 * [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
-* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)]
-(https://github.com/angeloocana/tic-tac-toe-ai)
+* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
 
 ## How it works
 
