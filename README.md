@@ -11,15 +11,24 @@
 Add different languages (i18n) for Gatsby.
 
 
-## Examples
+## Showcase
 
-https://angeloocana.com (source)https://github.com/angeloocana/angeloocana
+Websites built with Gatsby i18n:
+* [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
+* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)]
+(https://github.com/angeloocana/tic-tac-toe-ai)
+
+## How it works
+
+Name your files with .**langKey**.js and the url will be /**langKey**/path/fileName
+
+Examples:
 
 file | url
 -- | --
-src/pages/about.en.js | /en/about
-src/pages/about/index.en.js | /en/about
-src/pages/blog/gatsby-i18n.pt.md | /pt/gatsby-i18n
+src/pages/about.**en**.js | /**en**/about
+src/pages/about/index.**en**.js | /**en**/about
+src/pages/blog/gatsby-i18n.**pt**.md | /**pt**/gatsby-i18n
 
 
 ## Install
