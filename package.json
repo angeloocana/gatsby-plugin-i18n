@@ -8,7 +8,8 @@
     "build": "babel src --out-dir .",
     "watch": "babel -w src --out-dir .",
     "pretest": "yarn run build",
-    "test": "jest && codecov"
+    "test": "jest && codecov",
+    "test:open": "opn ./coverage/lcov-report/index.html"
   },
   "respository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^21.0.2",
+    "opn-cli": "^3.1.0",
     "ptz-assert": "^1.6.8",
     "ptz-i18n": "^0.1.0"
   },
