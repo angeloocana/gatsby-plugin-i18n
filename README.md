@@ -41,6 +41,7 @@ plugins: [
       options: {
         langKeyForNull: 'any',
         langKeyDefault: 'en',
+        useLangKeyLayout: false,
         markdownRemark: {
           postPage: 'src/templates/blog-post.js',
           query: `
@@ -62,3 +63,22 @@ plugins: [
     }
 ]
 ```
+
+### Options
+
+#### langKeyForNull
+lanKey to be added to context, in other to know that is not the default langKey.
+
+#### langKeyDefault
+lanKey to use when no lanKey specified.
+
+#### useLangKeyLayout
+**true**: create one layout for each langKey (src/layouts/en.js, src/layouts/pt.js, ...)
+
+**false**: use default layout (src/layouts/index.js)
+
+#### markdownRemark
+
+Add markdownRemark if you are using **gatsby-transformer-remark**.
+
+You can set a **postPage** component and a **query** to get the pages.
