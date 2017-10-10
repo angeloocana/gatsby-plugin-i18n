@@ -1,5 +1,9 @@
 ## master
 
+## 0.3.3 (October 11, 2017)
+
+* Made ptz-i18n required dependency
+
 ## 0.3.2 (October 04, 2017)
 
 * 100% test coverage.

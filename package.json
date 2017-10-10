@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-i18n",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Multi language feature for Gatsby",
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix ./src",
@@ -23,7 +23,8 @@
   "author": "angeloocana.com",
   "license": "MIT",
   "dependencies": {
-    "graphql": "^0.11.7"
+    "graphql": "^0.11.7",
+    "ptz-i18n": "^0.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -42,8 +43,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^21.2.1",
     "opn-cli": "^3.1.0",
-    "ptz-assert": "^1.6.8",
-    "ptz-i18n": "^0.1.2"
+    "ptz-assert": "^1.6.8"
   },
   "babel": {
     "presets": [
