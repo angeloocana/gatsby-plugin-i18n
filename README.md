@@ -27,7 +27,7 @@ file | url
 -- | --
 src/pages/about.**en**.js | /**en**/about
 src/pages/about/index.**en**.js | /**en**/about
-src/pages/blog/gatsby-i18n.**pt**.md | /**pt**/gatsby-i18n
+src/pages/blog/gatsby-i18n.**pt**.md | /**pt**/blog/gatsby-i18n
 
 
 ## Install
