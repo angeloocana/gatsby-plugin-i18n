@@ -17,6 +17,11 @@ Websites built with Gatsby i18n:
 * [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
 * [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
 
+## Starters
+
+[Docs](https://www.gatsbyjs.org/docs/gatsby-starters/)
+  * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com)
+
 ## How it works
 
 Name your files with .**langKey**.js and the url will be /**langKey**/path/fileName
