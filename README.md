@@ -8,19 +8,13 @@
 [![bitHound Score](https://www.bithound.io/github/gotwarlost/istanbul/badges/score.svg)](https://www.bithound.io/github/angeloocana/gatsby-plugin-i18n)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-Add different languages (i18n) for Gatsby.
+Hi Folks!
 
+Are you trying to build a multi language gatsby website?
 
-## Showcase
+We want to help you! Please open an issue for help, suggestions or bugs.
 
-Websites built with Gatsby i18n:
-* [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
-* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
-
-## Starters
-
-[Docs](https://www.gatsbyjs.org/docs/gatsby-starters/)
-  * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com)
+You can use this plugin with **react-intl**, **i18next**, or any other i18n library. This plugin do not translate messages, it just creates routes for each language.
 
 ## How it works
 
@@ -34,25 +28,53 @@ src/pages/about.**en**.js | /**en**/about
 src/pages/about/index.**en**.js | /**en**/about
 src/pages/blog/gatsby-i18n.**pt**.md | /**pt**/blog/gatsby-i18n
 
+## Why?
+
+Google! Google needs different URLs to crawl and render your pages.
+
+
+## Showcase
+
+Websites built with Gatsby i18n:
+* [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
+* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
+
+## Starters
+
+[Docs](https://www.gatsbyjs.org/docs/gatsby-starters/)
+  * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com)
+
 
 ## Install
 ```bash
-  npm install gatsby-plugin-i18n --save
+  yarn add gatsby-plugin-i18n
 ```
 
 
 ## How to use
-1. Include the plugin in your `gatsby-config.js` file.
+Include the plugin in your `gatsby-config.js` file.
 
-if you are NOT using **markdownRemark** you can remove the prop.
-
+### Simple configuration example:
 ```javascript
-// in gatsby-config.js
+// Add to gatsby-config.js
 plugins: [
   {
       resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyForNull: 'any',
+      options: {        
+        langKeyDefault: 'en',
+        useLangKeyLayout: false
+      }
+    }
+]
+```
+
+### Blog using **markdownRemark** configuration example:
+```javascript
+// Add to gatsby-config.js
+plugins: [
+  {
+      resolve: 'gatsby-plugin-i18n',
+      options: {        
         langKeyDefault: 'en',
         useLangKeyLayout: false,
         markdownRemark: {
@@ -77,21 +99,31 @@ plugins: [
 ]
 ```
 
-### Options
+### All Options
 
-#### langKeyForNull
-lanKey to be added to context, in other to know that is not the default langKey.
-
-#### langKeyDefault
+* **langKeyDefault:**
 lanKey to use when no lanKey specified.
 
-#### useLangKeyLayout
-**true**: create one layout for each langKey (src/layouts/en.js, src/layouts/pt.js, ...)
+* **useLangKeyLayout:**
 
-**false**: use default layout (src/layouts/index.js)
+  **true**: use a different layout for each langKey (src/layouts/**en**.js, src/layouts/**pt**.js, ...)
 
-#### markdownRemark
+  **false**: use default layout (src/layouts/index.js)
 
-Add markdownRemark if you are using **gatsby-transformer-remark**.
+* **markdownRemark:**
 
-You can set a **postPage** component and a **query** to get the pages.
+  Add markdownRemark if you are using **gatsby-transformer-remark**.
+
+  You can set a **postPage** component and a **query** to get the pages.
+
+* **langKeyForNull:**
+  lanKey added to page context and graphql when no lanKey specified. Default: **any**.
+
+
+## Finally
+
+Go Gatsby!
+
+Go Open-source!
+
+Good luck folks! Open an issue if you need help.
