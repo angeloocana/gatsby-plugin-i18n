@@ -21,7 +21,7 @@ const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
 
   const newPage = getNewPage(page, options);
 
-  deletePage({ path: page.path });
+  deletePage(page);
   createPage(newPage);
 };
 
