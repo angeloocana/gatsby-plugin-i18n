@@ -1,8 +1,12 @@
 ## master
 
+## 0.3.4 (October 26, 2017)
+
+* Fix deletePage. https://github.com/angeloocana/gatsby-plugin-i18n/issues/8
+
 ## 0.3.3 (October 11, 2017)
 
-* Made ptz-i18n required dependency
+* Made ptz-i18n required dependency.
 
 ## 0.3.2 (October 04, 2017)
 
