@@ -64,6 +64,29 @@ describe('onCreateNode', () => {
     assert.equal(calls, 1);
   });
 
+  it('ignore File not in pages folder', () => {
+    const slug = '/en/';
+    const node = {
+      internal: {
+        type: 'File'
+      },
+      slug,
+      absolutePath: '/src/data/index.en.js'
+    };
+
+    let calls = 0;
+
+    const boundActionCreators = {
+      createNodeField: (field) => {
+        calls += 1;
+      }
+    };
+
+    onCreateNode({ node, boundActionCreators });
+
+    assert.equal(calls, 0);
+  });
+
   describe('do NOT call createNodeField', () => {
     it('when type != File or MarkdownRemark', () => {
       const node = {

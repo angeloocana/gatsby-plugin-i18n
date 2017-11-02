@@ -16,7 +16,8 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
 
   const { createNodeField } = boundActionCreators;
 
-  if (node.internal.type === 'File') {
+  if (node.internal.type === 'File' && node.absolutePath.indexOf('/pages/') > 0) {
+
     const slugAndLang = getSlugAndLang(options.langKeyDefault, node.absolutePath);
 
     createNodeField({
