@@ -3025,8 +3025,8 @@ ptz-assert@^1.6.8:
     ptz-log "^1.0.0"
 
 ptz-i18n@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/ptz-i18n/-/ptz-i18n-0.2.2.tgz#9611a57d495c7c77389ea55ecc21f1311e2b6280"
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/ptz-i18n/-/ptz-i18n-0.2.3.tgz#e957652c70dd110022781d9d9f64c045a594596e"
   dependencies:
     ramda "^0.24.1"
 
