@@ -44,7 +44,7 @@ Websites built with Gatsby i18n:
 [Docs](https://www.gatsbyjs.org/docs/gatsby-starters/)
   * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com), features:
     - automatic browser-language detection and redirection
-    - integration with react-intl `FormattedMessage` with translation keys
+    - integration with react-intl `FormattedMessage` with translation keys
     - custom layout and pages per language
     - language switcher component
     - dev mode with HMR
