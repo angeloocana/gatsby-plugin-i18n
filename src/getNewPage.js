@@ -7,7 +7,7 @@ import { getSlugAndLang } from 'ptz-i18n';
  * @return {*} new page
  */
 const getNewPage = (oldPage, options) => {
-  const slugAndLang = getSlugAndLang(options.langKeyDefault, oldPage.componentPath);
+  const slugAndLang = getSlugAndLang(options, oldPage.componentPath);
 
   return Object.assign({}, oldPage, {
     path: slugAndLang.slug,

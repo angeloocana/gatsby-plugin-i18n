@@ -18,7 +18,7 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
 
   if (node.internal.type === 'File' && node.absolutePath.indexOf('/pages/') > 0) {
 
-    const slugAndLang = getSlugAndLang(options.langKeyDefault, node.absolutePath);
+    const slugAndLang = getSlugAndLang(options, node.absolutePath);
 
     createNodeField({
       node,
@@ -30,7 +30,7 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
     node.internal.type === 'MarkdownRemark' &&
     typeof node.slug === 'undefined'
   ) {
-    var slugAndLang = getSlugAndLang(options.langKeyDefault, node.fileAbsolutePath);
+    var slugAndLang = getSlugAndLang(options, node.fileAbsolutePath);
 
     createNodeField({
       node,
