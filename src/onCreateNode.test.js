@@ -1,5 +1,5 @@
 import { onCreateNode } from './onCreateNode';
-import * as assert from 'ptz-assert';
+import { deepEqual, equal } from 'ptz-assert';
 
 describe('onCreateNode', () => {
   it('createNodeField for MarkdownRemark', () => {
@@ -20,25 +20,27 @@ describe('onCreateNode', () => {
           const expectedField = {
             node, name: 'slug', value: slug
           };
-          assert.deepEqual(field, expectedField);
+          deepEqual(field, expectedField);
           calls += 1;
         } else if (field.name === 'langKey') {
           const expectedField = {
             node, name: 'langKey', value: langKey
           };
-          assert.deepEqual(field, expectedField);
+          deepEqual(field, expectedField);
           calls += 1;
         }
       }
     };
 
-    onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, boundActionCreators });
 
-    assert.equal(calls, 2);
+    equal(result, 'langKey and slug added');
+    equal(calls, 2);
   });
 
   it('createNodeField for File', () => {
     const slug = '/en/';
+    const langKey = 'en';
     const node = {
       internal: {
         type: 'File'
@@ -51,27 +53,35 @@ describe('onCreateNode', () => {
 
     const boundActionCreators = {
       createNodeField: (field) => {
-        const expectedField = {
-          node, name: 'slug', value: slug
-        };
-        assert.deepEqual(field, expectedField);
-        calls += 1;
+        if (field.name === 'slug') {
+          const expectedField = {
+            node, name: 'slug', value: slug
+          };
+          deepEqual(field, expectedField);
+          calls += 1;
+        } else if (field.name === 'langKey') {
+          const expectedField = {
+            node, name: 'langKey', value: langKey
+          };
+          deepEqual(field, expectedField);
+          calls += 1;
+        }
+
       }
     };
 
-    onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, boundActionCreators });
 
-    assert.equal(calls, 1);
+    equal(result, 'langKey and slug added');
+    equal(calls, 1);
   });
 
   it('ignore File not in pages folder', () => {
-    const slug = '/en/';
     const node = {
       internal: {
         type: 'File'
       },
-      slug,
-      absolutePath: '/src/data/index.en.js'
+      absolutePath: '/what/ever/data/index.en.js'
     };
 
     let calls = 0;
@@ -82,42 +92,27 @@ describe('onCreateNode', () => {
       }
     };
 
-    onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, boundActionCreators });
 
-    assert.equal(calls, 0);
+    equal(calls, 0);
+    equal(result, 'Skipping page, not in pagesPaths');
   });
 
-  describe('do NOT call createNodeField', () => {
-    it('when type != File or MarkdownRemark', () => {
-      const node = {
-        internal: {
-          type: 'other'
-        }
-      };
-      const boundActionCreators = {
-        createNodeField: (args) => {
-          throw (args);
-        }
-      };
+  it('do NOT call createNodeField when type != File or MarkdownRemark', () => {
+    const node = {
+      internal: {
+        type: 'other'
+      }
+    };
+    const boundActionCreators = {
+      createNodeField: (args) => {
+        throw (args);
+      }
+    };
 
-      onCreateNode({ node, boundActionCreators });
-    });
+    const result = onCreateNode({ node, boundActionCreators });
 
-    it('when type = MarkdownRemark but node.slug and node.langKey are not undefined', () => {
-      const node = {
-        internal: {
-          type: 'MarkdownRemark'
-        },
-        slug: '/en/test/',
-        langKey: 'en'
-      };
-      const boundActionCreators = {
-        createNodeField: (args) => {
-          throw (args);
-        }
-      };
-
-      onCreateNode({ node, boundActionCreators });
-    });
+    equal(result, 'Skiping file type: other');
   });
 });
+
