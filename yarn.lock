@@ -1574,6 +1574,10 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
+folktale@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.1.tgz#6dc26a65565aefdef9520223e022dddf5b8d8462"
+
 for-in@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -3024,10 +3028,11 @@ ptz-assert@^1.6.8:
     assert "^1.4.1"
     ptz-log "^1.0.0"
 
-ptz-i18n@^0.2.2:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/ptz-i18n/-/ptz-i18n-0.2.5.tgz#61fa35b7a4a28193db2d96a2a68c6a442d8a5093"
+ptz-i18n@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ptz-i18n/-/ptz-i18n-0.3.0.tgz#f9b6b6874475a15c0abc0c3f82bce2ac9a6d5af4"
   dependencies:
+    folktale "^2.0.1"
     ramda "^0.24.1"
 
 ptz-log@^1.0.0:

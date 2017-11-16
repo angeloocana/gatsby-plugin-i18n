@@ -1,5 +1,6 @@
 import defaultOptions from './defaultOptions';
 import { getNewPage } from './getNewPage';
+import { isInPagesPaths } from 'ptz-i18n';
 
 /**
  * Add context.slug and .langKey for react props
@@ -8,8 +9,8 @@ import { getNewPage } from './getNewPage';
  * @returns {Promise} Promise
  */
 const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
-  if (page.context.slug || page.componentPath.indexOf('/pages/') === -1) {
-    return;
+  if (page.context.slug) {
+    return 'Skipping page already has slug'; // Allow only pages without slug
   }
 
   const options = {
@@ -17,14 +18,30 @@ const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
     ...pluginOptions
   };
 
-  const { createPage, deletePage } = boundActionCreators;
+  return isInPagesPaths(options, page.componentPath)
+    .map(isInPaths => {
+      if(isInPaths === false){
+        return 'Skipping page, not in pagesPaths';
+      }
 
-  const newPage = getNewPage(page, options);
+      const { createPage, deletePage } = boundActionCreators;
 
-  deletePage(page);
-  createPage(newPage);
+      const newPage = getNewPage(page, options);
+
+      deletePage(page);
+      createPage(newPage);
+
+      return 'Page created';
+    })
+    .mapError(error => {
+      const errorMsg = 'Error gatsby-plugin-i18n onCreatePage: ' + error;
+      console.log(errorMsg);
+      return errorMsg;
+    })
+    .merge();
 };
 
 export {
   onCreatePage
 };
+
