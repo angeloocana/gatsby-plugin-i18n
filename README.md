@@ -124,7 +124,19 @@ lanKey to use when no lanKey specified.
 * **langKeyForNull:**
   lanKey added to page context and graphql when no lanKey specified. Default: **any**.
 
-
+* **pagesPaths:**
+   If you are not using just `/src/pages/` folder, you can add an array with the folders your are using:
+   ```
+    plugins:{
+      //... other plugins
+      resolve: 'gatsby-plugin-i18n',
+        options: {        
+          //.. other options
+          pagesPaths: [ '/my/custom/pages/folder1', /my/custom/pages/folder2/ ]
+    }
+   ```
+     
+   
 ## Finally
 
 Go Gatsby!
