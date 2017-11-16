@@ -14,7 +14,7 @@ Are you trying to build a multi language gatsby website?
 
 We want to help you! Please open an issue for help, suggestions or bugs.
 
-You can use this plugin with **react-intl**, **i18next**, or any other i18n library. This plugin do not translate messages, it just creates routes for each language.
+You can use this plugin with **react-intl**, **i18next**, or any other i18n library. This plugin do not translate messages, it just creates routes for each language, and you can use different layouts for each language if you want to.
 
 ## How it works
 
@@ -30,7 +30,7 @@ src/pages/blog/gatsby-i18n.**pt**.md | /**pt**/blog/gatsby-i18n
 
 ## Why?
 
-Google! Google needs different URLs to crawl and render your pages.
+Google! Google needs different URLs to crawl and render your pages for each language.
 
 
 ## Showcase
