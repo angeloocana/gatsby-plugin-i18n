@@ -1,5 +1,9 @@
 ## master
 
+## 0.4.0 (November 16, 2017)
+
+* Add `pagesPaths` to plugin options.
+
 ## 0.3.5 (November 01, 2017)
 
 * Ignore files outside `pages` folder. Fix https://github.com/angeloocana/gatsby-plugin-i18n/issues/9
