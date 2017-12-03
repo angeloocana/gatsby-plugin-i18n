@@ -36,13 +36,19 @@ describe('createPages', () => {
                 }
               }
             },
+            {
+              'node': {
+                'fields': null // Simulate contentful nodes https://github.com/angeloocana/gatsby-plugin-i18n/issues/16
+              }
+            }
           ]
         }
       }
     });
 
+    let pagesCreated = 0;
     const boundActionCreators = {
-      createPage: () => null
+      createPage: () => { pagesCreated += 1; }
     };
     const pluginOptions = {
       markdownRemark: {
@@ -65,7 +71,10 @@ describe('createPages', () => {
     };
 
     createPages({ graphql, boundActionCreators }, pluginOptions)
-      .then(done);
+      .then(() => {
+        assert.equal(pagesCreated, 2);
+        done();
+      });
   });
 
   it('result.errors', (done) => {

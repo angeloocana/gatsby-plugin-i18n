@@ -2,6 +2,7 @@ import defaultOptions from './defaultOptions';
 import logError from './logError';
 import path from 'path';
 import getMarkdownPage from './getMarkdownPage';
+import R from 'ramda';
 
 const createPages = (_, pluginOptions) => {
   if (!pluginOptions.markdownRemark) {
@@ -27,6 +28,7 @@ const createPages = (_, pluginOptions) => {
         }
 
         result.data.allMarkdownRemark.edges
+          .filter(R.path(['node', 'fields', 'slug']))
           .map(getMarkdownPage(options, postPage))
           .map(page => createPage(page));
 
