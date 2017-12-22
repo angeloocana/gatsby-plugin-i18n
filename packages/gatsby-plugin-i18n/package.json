@@ -24,6 +24,7 @@
   "author": "angeloocana.com",
   "license": "MIT",
   "dependencies": {
+    "codecov": "^3.0.0",
     "folktale": "^2.0.1",
     "graphql": "^0.11.7",
     "ptz-i18n": "^0.3.0"
@@ -43,7 +44,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jest": "^21.2.1",
+    "jest": "^22.0.4",
     "opn-cli": "^3.1.0",
     "ptz-assert": "^1.6.8"
   },

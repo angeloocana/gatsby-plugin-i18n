@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "postinstall": "lerna bootstrap --hoist",
+    "test": "lerna exec yarn test"
+  },
 	"devDependencies": {
 		"lerna": "^2.5.1"
 	}

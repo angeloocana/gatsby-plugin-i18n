@@ -1,0 +1,18 @@
+0 silly input [ 'yarn', 'test' ]
+1 silly flags { _: [ 'exec' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   command: 'yarn',
+1 silly flags   args: [ 'test' ] }
+2 verbose rootPath /home/angeloocana/dev/gatsby-plugin-i18n
+3 info version 2.5.1
+4 info versioning independent
+5 silly existsSync /home/angeloocana/dev/gatsby-plugin-i18n/VERSION
+6 silly initialize attempt
+7 silly initialize success
+8 silly execute attempt
+9 error exec Errored while executing 'yarn test' in 'gatsby-starter-default-i18n'
+10 error execute callback with error
+11 error Error: Command failed: yarn test
+11 error     at Promise.all.then.arr (/usr/lib/node_modules/lerna/node_modules/execa/index.js:236:11)
+11 error     at <anonymous>
