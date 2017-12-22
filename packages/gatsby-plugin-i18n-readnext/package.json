@@ -1,0 +1,64 @@
+{
+  "name": "gatsby-plugin-i18n-readnext",
+  "version": "0.0.4",
+  "description": "Read Next feature for multi language gatsby projects",
+  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n-readnext#readme",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint --fix ./src",
+    "prebuild": "yarn run lint",
+    "build": "babel src --out-dir .",
+    "watch": "babel -w src --out-dir .",
+    "pretest": "yarn run build",
+    "test": "jest",
+    "coverage": "codecov"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/angeloocana/gatsby-plugin-i18n-readnext"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "i18n",
+    "readNext"
+  ],
+  "author": "angeloocana.com",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "ptz-i18n": "^0.1.0",
+    "ptz-math": "^1.1.0",
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.0.2",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.0.4",
+    "ptz-assert": "^1.6.8"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "readme": "README.md",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
+}

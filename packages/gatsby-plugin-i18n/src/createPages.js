@@ -4,6 +4,8 @@ import path from 'path';
 import getMarkdownPage from './getMarkdownPage';
 import R from 'ramda';
 
+// Test git
+
 const createPages = (_, pluginOptions) => {
   if (!pluginOptions.markdownRemark) {
     return null;
