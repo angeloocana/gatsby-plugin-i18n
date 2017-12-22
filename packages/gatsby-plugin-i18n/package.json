@@ -8,7 +8,7 @@
     "prebuild": "yarn run lint",
     "build": "babel src --out-dir . --ignore '**/*.test.js'",
     "watch": "babel -w src --out-dir . --ignore '**/*.test.js'",
-    "test": "jest --showConfig",
+    "test": "jest --showConfig && jest",
     "coverage": "codecov",
     "test:open": "opn ./coverage/lcov-report/index.html"
   },
@@ -59,6 +59,6 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "testMatch": ["<rootDir>/src/**/*.test.js"]
+    "testMatch": ["/src/**/*.test.js"]
   }
 }
