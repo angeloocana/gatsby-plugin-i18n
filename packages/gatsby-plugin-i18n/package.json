@@ -58,11 +58,6 @@
   "readme": "README.md",
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "moduleDirectories": [
-      "node_modules",
-      "src",
-      "test"
-    ]
+    "collectCoverage": true
   }
 }
