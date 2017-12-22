@@ -1,7 +1,7 @@
 {
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "test": "lerna run test"
+    "test": "lerna exec yarn test"
   },
 	"devDependencies": {
 		"lerna": "^2.5.1"
