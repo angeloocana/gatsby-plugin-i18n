@@ -1,7 +1,7 @@
 {
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "test": "cd ./packages/gatsby-plugin-i18n && yarn test"
+    "test": "lerna run --scope gatsby-plugin-i18n test"
   },
 	"devDependencies": {
 		"lerna": "^2.5.1"
