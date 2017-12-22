@@ -59,6 +59,10 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "testMatch": ["/src/**/*.test.js"]
+    "moduleDirectories": [
+      "node_modules",
+      "src",
+      "test"
+    ]
   }
 }
