@@ -8,7 +8,7 @@
     "prebuild": "yarn run lint",
     "build": "babel src --out-dir . --ignore '**/*.test.js'",
     "watch": "babel -w src --out-dir . --ignore '**/*.test.js'",
-    "test": "ls && cat package.json && yarn run lint && jest --showConfig && jest",
+    "test": "yarn run lint && jest",
     "coverage": "codecov",
     "test:open": "opn ./coverage/lcov-report/index.html"
   },
