@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "author": "angeloocana.com",
   "dependencies": {
-    "codecov": "^3.0.0",
     "gatsby": "^1.9.63",
     "gatsby-link": "^1.6.21",
     "gatsby-plugin-i18n": "^0.3.3",
@@ -22,9 +21,11 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
-    "test": "jest && codecov"
+    "test": "jest",
+    "coverage": "codecov"
   },
   "devDependencies": {
+    "codecov": "^3.0.0",
     "jest": "^22.0.4",
     "prettier": "^1.7.4"
   },

@@ -10,7 +10,8 @@
     "build": "babel src --out-dir ./dist",
     "watch": "babel -w src --out-dir ./dist",
     "pretest": "yarn run build",
-    "test": "jest && codecov",
+    "test": "jest",
+    "coverage": "codecov",
     "test:watch": "jest --watch",
     "test:open": "opn ./coverage/lcov-report/index.html"
   },
@@ -25,7 +26,6 @@
   "author": "angeloocana.com",
   "license": "MIT",
   "dependencies": {
-    "codecov": "^3.0.0",
     "folktale": "^2.0.1",
     "ramda": "^0.24.1"
   },
@@ -35,7 +35,7 @@
     "babel-plugin-ramda": "^1.4.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "codecov": "^2.3.0",
+    "codecov": "^3.0.0",
     "eslint": "^4.4.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",

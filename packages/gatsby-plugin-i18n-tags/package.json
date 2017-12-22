@@ -9,7 +9,8 @@
     "build": "babel src --out-dir .",
     "watch": "babel -w src --out-dir .",
     "pretest": "yarn run build",
-    "test": "jest && codecov"
+    "test": "jest",
+    "coverage": "codecov"
   },
   "respository": {
     "type": "git",
@@ -24,7 +25,6 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "codecov": "^3.0.0",
     "graphql": "^0.11.1",
     "ptz-i18n": "^0.0.6"
   },
@@ -33,7 +33,7 @@
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "codecov": "^2.3.0",
+    "codecov": "^3.0.0",
     "eslint": "^4.4.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
