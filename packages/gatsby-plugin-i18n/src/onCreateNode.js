@@ -52,11 +52,18 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
 
         createNodeField({
           node,
+          name: 'path',
+          value: slugAndLang.path
+        });
+
+        createNodeField({
+          node,
           name: 'slug',
           value: slugAndLang.slug
         });
 
-        return 'langKey and slug added';
+
+        return 'langKey, path and slug added';
       }, isInPagesPaths(options, filePath))
     )
     .merge();

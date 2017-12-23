@@ -41,9 +41,12 @@ const getSlugAndLang = curry((options, fileAbsolutePath) => {
         addSlash(fileName[0].replace('index', ''))
     );
 
+    const path = addSlash(fileName[0].replace('index', ''));
+
     return {
       slug,
       langKey,
+      path,
       redirectTo: slug === '/' ? addSlash(langKeyDefault) : null
     };
   });

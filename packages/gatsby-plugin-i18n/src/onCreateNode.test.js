@@ -34,7 +34,7 @@ describe('onCreateNode', () => {
 
     const result = onCreateNode({ node, boundActionCreators });
 
-    equal(result, 'langKey and slug added');
+    equal(result, 'langKey, path and slug added');
     equal(calls, 2);
   });
 
@@ -72,7 +72,7 @@ describe('onCreateNode', () => {
 
     const result = onCreateNode({ node, boundActionCreators });
 
-    equal(result, 'langKey and slug added');
+    equal(result, 'langKey, path and slug added');
     equal(calls, 1);
   });
 
