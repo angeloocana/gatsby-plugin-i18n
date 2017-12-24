@@ -1,12 +1,13 @@
 {
   "scripts": {
-    "postinstall": "lerna bootstrap",
     "test": "lerna run test && codecov"
   },
   "devDependencies": {
-    "codecov": "^3.0.0",
-    "lerna": "^2.5.1"
+    "codecov": "^3.0.0i"
   },
   "license": "MIT",
+  "private": true,
+  "workspaces": ["packages/*"],
   "dependencies": {}
 }
+
