@@ -48,13 +48,12 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
             name: 'langKey',
             value: slugAndLang.langKey
           });
+          createNodeField({
+            node,
+            name: 'path',
+            value: slugAndLang.path
+          });
         }
-
-        createNodeField({
-          node,
-          name: 'path',
-          value: slugAndLang.path
-        });
 
         createNodeField({
           node,
