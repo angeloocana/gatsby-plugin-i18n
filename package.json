@@ -7,6 +7,10 @@
     "codecov": "^3.0.0",
     "lerna": "^2.5.1"
   },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
   "license": "MIT",
   "dependencies": {}
 }
