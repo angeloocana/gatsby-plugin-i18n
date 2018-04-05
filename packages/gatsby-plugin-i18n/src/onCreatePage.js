@@ -29,7 +29,15 @@ const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
       const newPage = getNewPage(page, options);
 
       deletePage(page);
-      createPage(newPage);
+
+    if (page.path === '/404.html') {
+        createPage({
+          ...newPage,
+          path: `/404.html`
+        });
+      } else {
+        createPage(newPage);
+      }
 
       return 'Page created';
     })
