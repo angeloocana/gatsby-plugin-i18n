@@ -30,7 +30,7 @@ const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
 
       deletePage(page);
 
-    if (page.path === '/404.html') {
+      if (page.path === '/404.html') {
         createPage({
           ...newPage,
           path: `/404.html`

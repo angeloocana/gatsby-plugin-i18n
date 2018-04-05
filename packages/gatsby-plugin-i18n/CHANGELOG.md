@@ -1,5 +1,9 @@
 ## master
 
+## 0.4.2 (April 04, 2018)
+
+* Fix 404 page. Thanks @ChrisBoon ! https://github.com/angeloocana/gatsby-plugin-i18n/pull/37
+
 ## 0.4.1 (December 03, 2017)
 
 * Fix contentful pages. Issue: https://github.com/angeloocana/gatsby-plugin-i18n/issues/16
