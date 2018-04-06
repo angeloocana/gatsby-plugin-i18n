@@ -36,7 +36,7 @@ var onCreateNode = function onCreateNode(_ref, pluginOptions) {
 
   if (node.frontmatter && node.frontmatter.tags && node.fields && !node.fields.tagSlugs) {
 
-    var slugAndLang = (0, _ptzI18n.getSlugAndLang)(options.langKeyForNull, node.fileAbsolutePath);
+    var slugAndLang = (0, _ptzI18n.getSlugAndLang)(options, node.fileAbsolutePath);
 
     var tagSlugs = node.frontmatter.tags.map(function (tag) {
       return {

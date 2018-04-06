@@ -20,7 +20,7 @@ const onCreateNode = ({ node, boundActionCreators, getNode }, pluginOptions) => 
   if (node.frontmatter && node.frontmatter.tags &&
         node.fields && !node.fields.tagSlugs) {
 
-    const slugAndLang = getSlugAndLang(options.langKeyForNull, node.fileAbsolutePath);
+    const slugAndLang = getSlugAndLang(options, node.fileAbsolutePath);
 
     const tagSlugs = node.frontmatter.tags.map(
       tag => {
