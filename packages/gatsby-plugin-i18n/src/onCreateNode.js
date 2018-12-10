@@ -23,7 +23,7 @@ const getFilePath = node => {
  * @param {*} pluginOptions plugin options from gatsby-config.js
  * @returns {void} void
  */
-const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
+const onCreateNode = ({ node, actions }, pluginOptions) => {
 
   const options = {
     ...defaultOptions,
@@ -40,7 +40,7 @@ const onCreateNode = ({ node, boundActionCreators }, pluginOptions) => {
 
         const slugAndLang = getSlugAndLang(options, filePath);
 
-        const { createNodeField } = boundActionCreators;
+        const { createNodeField } = actions;
 
         if(node.internal.type === 'MarkdownRemark'){
           createNodeField({

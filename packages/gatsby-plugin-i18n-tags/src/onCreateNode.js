@@ -8,14 +8,14 @@ import { getSlugAndLang } from 'ptz-i18n';
  * @param {*} pluginOptions plugin options from gatsby-config.js
  * @returns {void}
  */
-const onCreateNode = ({ node, boundActionCreators, getNode }, pluginOptions) => {
+const onCreateNode = ({ node, actions, getNode }, pluginOptions) => {
 
   const options = {
     ...defaultOptions,
     ...pluginOptions
   };
 
-  const { createNodeField } = boundActionCreators;
+  const { createNodeField } = actions;
 
   if (node.frontmatter && node.frontmatter.tags &&
         node.fields && !node.fields.tagSlugs) {

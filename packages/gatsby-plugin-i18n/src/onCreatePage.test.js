@@ -25,7 +25,7 @@ describe('onCreatePage', () => {
       layout: 'en'
     };
 
-    const boundActionCreators = {
+    const actions = {
       createPage: (page) => {
         assert.deepEqual(page, expectedPage);
         done();
@@ -33,7 +33,7 @@ describe('onCreatePage', () => {
       deletePage: ({ path }) => assert.equal(path, oldPath)
     };
 
-    const result = onCreatePage({ page: oldPage, boundActionCreators }, options);
+    const result = onCreatePage({ page: oldPage, actions }, options);
 
     assert.equal(result, 'Page created');
   });
@@ -61,7 +61,7 @@ describe('onCreatePage', () => {
       layout: undefined // eslint-disable-line no-undefined
     };
 
-    const boundActionCreators = {
+    const actions = {
       createPage: (page) => {
         assert.deepEqual(page, expectedPage);
         done();
@@ -69,7 +69,7 @@ describe('onCreatePage', () => {
       deletePage: ({ path }) => assert.equal(path, oldPath)
     };
 
-    const result = onCreatePage({ page: oldPage, boundActionCreators }, options);
+    const result = onCreatePage({ page: oldPage, actions }, options);
 
     assert.equal(result, 'Page created');
   });
@@ -82,12 +82,12 @@ describe('onCreatePage', () => {
       componentPath: '/angeloocana/pages/test.en.js'
     };
 
-    const boundActionCreators = {
+    const actions = {
       createPage: () => { throw new Error('can not call createPage'); },
       deletePage: () => { throw new Error('can not call deletePage'); }
     };
 
-    const result = onCreatePage({ page, boundActionCreators });
+    const result = onCreatePage({ page, actions });
 
     assert.equal(result, 'Skipping page already has slug');
   });
@@ -99,12 +99,12 @@ describe('onCreatePage', () => {
       componentPath: '/angeloocana/test.en.js'
     };
 
-    const boundActionCreators = {
+    const actions = {
       createPage: () => { throw new Error('can not call createPage'); },
       deletePage: () => { throw new Error('can not call deletePage'); }
     };
 
-    const result = onCreatePage({ page, boundActionCreators });
+    const result = onCreatePage({ page, actions });
 
     assert.equal(result, 'Skipping page, not in pagesPaths');
   });

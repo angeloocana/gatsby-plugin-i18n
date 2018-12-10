@@ -4,8 +4,8 @@ import path from 'path';
 import {logError} from './logError';
 import R from 'ramda';
 
-const createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
-  const { createPage } = boundActionCreators;
+const createPages = ({ graphql, actions }, pluginOptions) => {
+  const { createPage } = actions;
   const options = {
     ...defaultOptions,
     ...pluginOptions

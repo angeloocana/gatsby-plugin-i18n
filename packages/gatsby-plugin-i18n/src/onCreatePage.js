@@ -8,7 +8,7 @@ import { isInPagesPaths } from 'ptz-i18n';
  * @param {*} pluginOptions plugin options from gatsby-config.js
  * @returns {Promise} Promise
  */
-const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
+const onCreatePage = ({ page, actions }, pluginOptions) => {
   if (page.context.slug) {
     return 'Skipping page already has slug'; // Allow only pages without slug
   }
@@ -24,7 +24,7 @@ const onCreatePage = ({ page, boundActionCreators }, pluginOptions) => {
         return 'Skipping page, not in pagesPaths';
       }
 
-      const { createPage, deletePage } = boundActionCreators;
+      const { createPage, deletePage } = actions;
 
       const newPage = getNewPage(page, options);
 

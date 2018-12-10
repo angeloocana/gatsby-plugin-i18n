@@ -27,8 +27,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var createPages = function createPages(_ref, pluginOptions) {
   var graphql = _ref.graphql,
-      boundActionCreators = _ref.boundActionCreators;
-  var createPage = boundActionCreators.createPage;
+      actions = _ref.actions;
+  var createPage = actions.createPage;
 
   var options = _extends({}, _defaultOptions.defaultOptions, pluginOptions);
 

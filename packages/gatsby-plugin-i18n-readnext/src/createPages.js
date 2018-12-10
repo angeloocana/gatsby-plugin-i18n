@@ -2,7 +2,7 @@ import { defaultOptions } from './defaultOptions';
 import { getReadNext } from './getReadNext';
 import R from 'ramda';
 
-const createPages = ({ graphql, boundActionCreators, getNode }, pluginOptions) => {
+const createPages = ({ graphql, actions, getNode }, pluginOptions) => {
   const options = {
     ...defaultOptions,
     ...pluginOptions
@@ -38,7 +38,7 @@ const createPages = ({ graphql, boundActionCreators, getNode }, pluginOptions) =
         const posts = result.data.allMarkdownRemark.edges
           .filter(R.path(['node', 'fields', 'langKey']))
           .map(edge => edge.node);
-        const { createNodeField } = boundActionCreators;
+        const { createNodeField } = actions;
 
         posts.forEach(post => {
           const readNextPosts = getReadNext(options.nPosts, post, posts)
