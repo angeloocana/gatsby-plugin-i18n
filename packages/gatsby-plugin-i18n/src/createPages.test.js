@@ -4,14 +4,14 @@ import * as assert from 'ptz-assert';
 describe('createPages', () => {
   it('return null when no options.markdownRemark', () => {
     const graphql = () => null;
-    const boundActionCreators = {
+    const actions = {
       createPage: () => null
     };
     const pluginOptions = {
 
     };
 
-    const result = createPages({ graphql, boundActionCreators }, pluginOptions);
+    const result = createPages({ graphql, actions }, pluginOptions);
     assert.notOk(result);
   });
 
@@ -47,7 +47,7 @@ describe('createPages', () => {
     });
 
     let pagesCreated = 0;
-    const boundActionCreators = {
+    const actions = {
       createPage: () => { pagesCreated += 1; }
     };
     const pluginOptions = {
@@ -70,7 +70,7 @@ describe('createPages', () => {
       }
     };
 
-    createPages({ graphql, boundActionCreators }, pluginOptions)
+    createPages({ graphql, actions }, pluginOptions)
       .then(() => {
         assert.equal(pagesCreated, 2);
         done();
@@ -82,7 +82,7 @@ describe('createPages', () => {
       errors: ['error test']
     });
 
-    const boundActionCreators = {
+    const actions = {
       createPage: () => null
     };
 
@@ -106,7 +106,7 @@ describe('createPages', () => {
       }
     };
 
-    createPages({ graphql, boundActionCreators }, pluginOptions)
+    createPages({ graphql, actions }, pluginOptions)
       .catch(() => done());
   });
 });

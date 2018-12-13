@@ -11,7 +11,7 @@ const setFieldsOnGraphQLNodeType = (args, pluginOptions) => {
   };
   
   return new Promise(function (resolve, reject) {
-    const { createNodeField } = args.boundActionCreators;
+    const { createNodeField } = args.actions;
   
     const posts = args.getNodes().filter(n => n.fields && n.fields.langKey && !n.fields.readNextPosts);
   

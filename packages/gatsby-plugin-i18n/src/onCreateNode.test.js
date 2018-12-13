@@ -14,7 +14,7 @@ describe('onCreateNode', () => {
 
     let calls = 0;
 
-    const boundActionCreators = {
+    const actions = {
       createNodeField: (field) => {
         if (field.name === 'slug') {
           const expectedField = {
@@ -32,7 +32,7 @@ describe('onCreateNode', () => {
       }
     };
 
-    const result = onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, actions });
 
     equal(result, 'langKey and slug added');
     equal(calls, 2);
@@ -51,7 +51,7 @@ describe('onCreateNode', () => {
 
     let calls = 0;
 
-    const boundActionCreators = {
+    const actions = {
       createNodeField: (field) => {
         if (field.name === 'slug') {
           const expectedField = {
@@ -70,7 +70,7 @@ describe('onCreateNode', () => {
       }
     };
 
-    const result = onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, actions });
 
     equal(result, 'langKey and slug added');
     equal(calls, 1);
@@ -86,13 +86,13 @@ describe('onCreateNode', () => {
 
     let calls = 0;
 
-    const boundActionCreators = {
+    const actions = {
       createNodeField: (field) => {
         calls += 1;
       }
     };
 
-    const result = onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, actions });
 
     equal(calls, 0);
     equal(result, 'Skipping page, not in pagesPaths');
@@ -104,13 +104,13 @@ describe('onCreateNode', () => {
         type: 'other'
       }
     };
-    const boundActionCreators = {
+    const actions = {
       createNodeField: (args) => {
         throw (args);
       }
     };
 
-    const result = onCreateNode({ node, boundActionCreators });
+    const result = onCreateNode({ node, actions });
 
     equal(result, 'Skiping file type: other');
   });

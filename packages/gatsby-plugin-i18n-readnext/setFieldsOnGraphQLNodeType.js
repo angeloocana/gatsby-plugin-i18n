@@ -18,7 +18,7 @@ var setFieldsOnGraphQLNodeType = function setFieldsOnGraphQLNodeType(args, plugi
   var options = _extends({}, _defaultOptions.defaultOptions, pluginOptions);
 
   return new Promise(function (resolve, reject) {
-    var createNodeField = args.boundActionCreators.createNodeField;
+    var createNodeField = args.actions.createNodeField;
 
 
     var posts = args.getNodes().filter(function (n) {

@@ -16,8 +16,8 @@ const createPages = (_, pluginOptions) => {
     ...pluginOptions
   };
 
-  const { graphql, boundActionCreators } = _;
-  const { createPage } = boundActionCreators;
+  const { graphql, actions } = _;
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve(options.markdownRemark.postPage);

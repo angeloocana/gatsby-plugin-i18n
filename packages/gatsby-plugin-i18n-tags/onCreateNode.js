@@ -25,13 +25,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var onCreateNode = function onCreateNode(_ref, pluginOptions) {
   var node = _ref.node,
-      boundActionCreators = _ref.boundActionCreators,
+      actions = _ref.actions,
       getNode = _ref.getNode;
 
 
   var options = _extends({}, _defaultOptions.defaultOptions, pluginOptions);
 
-  var createNodeField = boundActionCreators.createNodeField;
+  var createNodeField = actions.createNodeField;
 
 
   if (node.frontmatter && node.frontmatter.tags && node.fields && !node.fields.tagSlugs) {

@@ -19,7 +19,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var createPages = function createPages(_ref, pluginOptions) {
   var graphql = _ref.graphql,
-      boundActionCreators = _ref.boundActionCreators,
+      actions = _ref.actions,
       getNode = _ref.getNode;
 
   var options = _extends({}, _defaultOptions.defaultOptions, pluginOptions);
@@ -35,7 +35,7 @@ var createPages = function createPages(_ref, pluginOptions) {
         var posts = result.data.allMarkdownRemark.edges.filter(_ramda2.default.path(['node', 'fields', 'langKey'])).map(function (edge) {
           return edge.node;
         });
-        var createNodeField = boundActionCreators.createNodeField;
+        var createNodeField = actions.createNodeField;
 
 
         posts.forEach(function (post) {
