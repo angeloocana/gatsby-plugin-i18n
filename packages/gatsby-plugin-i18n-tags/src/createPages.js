@@ -33,7 +33,8 @@ const createPages = ({ graphql, actions }, pluginOptions) => {
             .filter(tag => tag && tag !== '');
   
           tags.forEach(tag => {
-            const tagPath = `/${langKey}${options.tagsUrl}${_.kebabCase(tag)}/`;
+            const shouldPrefix = langKey !== options.langKeyDefault || options.prefixDefault;  
+            const tagPath = `${shouldPrefix ? '/' + langKey : ''}${options.tagsUrl}${_.kebabCase(tag)}/`;
             createPage({
               path: tagPath,
               component: tagPage,

@@ -114,4 +114,61 @@ describe('getSlugAndLang', () => {
 
     assert.deepEqual(slugAndLangKey, expected);
   });
+
+  describe('should add langKey in url', () => {
+
+    it('when prefixDefault is true and .langKey matches default', () => {
+      const absoluteFilePath = '/what/ever/src/pages/blog/test.en.md';
+      const options = {
+        langKeyDefault: 'en',
+        prefixDefault: true
+      };
+      const slugAndLangKey = getSlugAndLang(options, absoluteFilePath);
+      const expected = {
+        slug: '/en/blog/test/',
+        langKey: 'en',
+        redirectTo: null
+      };
+  
+      assert.deepEqual(slugAndLangKey, expected);
+    });
+
+    it('when prefixDefault is false and .langKey is different from default', () => {
+      const absoluteFilePath = '/what/ever/src/pages/blog/test.pt.md';
+      const options = {
+        langKeyDefault: 'en',
+        prefixDefault: false
+      };
+      const slugAndLangKey = getSlugAndLang(options, absoluteFilePath);
+      const expected = {
+        slug: '/pt/blog/test/',
+        langKey: 'pt',
+        redirectTo: null
+      };
+  
+      assert.deepEqual(slugAndLangKey, expected);
+    });
+
+  });
+
+  describe('should omit lang in url', () => {
+
+    it('when prefixDefault is false and page lang matches default', () => {
+      const absoluteFilePath = '/what/ever/src/pages/blog/test.en.md';
+      const options = {
+        langKeyDefault: 'en',
+        prefixDefault: false
+      };
+      const slugAndLangKey = getSlugAndLang(options, absoluteFilePath);
+      const expected = {
+        slug: '/blog/test/',
+        langKey: 'en',
+        redirectTo: null
+      };
+
+      assert.deepEqual(slugAndLangKey, expected);
+    });
+
+  });
+
 });

@@ -21,7 +21,7 @@ const addSlash = compose(addSlashStart, addSlashEnd);
  *
  * Used by gatsby-plugin-i18n and gatsby-plugin-i18n-tags
  *
- * @param {{langKeyDefault: string, pagesPaths: string[] }} options plugin options
+ * @param {{langKeyDefault: string, pagesPaths: string[], prefixDefault: boolean }} options plugin options
  * @param {String} fileAbsolutePath local file absolute path
  * @return {{slug: string, langKey: string, redirectTo: string}} slug and langKey
  */
@@ -36,8 +36,9 @@ const getSlugAndLang = curry((options, fileAbsolutePath) => {
     const langKeyDefault = getLangKeyDefault(options);
     const fileName = filePath.split('.');
     const langKey = fileName.length === 3 ? fileName[1] : langKeyDefault;
+    const shouldPrefix = langKey !== options.langKeyDefault || options.prefixDefault;
     const slug = addSlash(
-      (fileName.length === 3 ? langKey : '') +
+      (shouldPrefix && fileName.length === 3 ? langKey : '') +
         addSlash(fileName[0].replace('index', ''))
     );
 

@@ -2,7 +2,8 @@ export default {
   langKeyForNull: 'any',
   langKeyDefault: 'en',
   useLangKeyLayout: false,
-  pagesPaths: ['/src/pages/']
+  pagesPaths: ['/src/pages/'],
+  prefixDefault: true
   // Example of markdownRemark
   // markdownRemark: {
   //   postPage: 'src/templates/blog-post.js',

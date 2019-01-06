@@ -53,7 +53,8 @@ var createPages = function createPages(_ref, pluginOptions) {
           });
 
           tags.forEach(function (tag) {
-            var tagPath = '/' + langKey + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/';
+            var shouldPrefix = langKey !== options.langKeyDefault || options.prefixDefault;
+            var tagPath = '' + (shouldPrefix ? '/' + langKey : '') + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/';
             createPage({
               path: tagPath,
               component: tagPage,

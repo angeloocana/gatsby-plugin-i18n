@@ -24,9 +24,10 @@ const onCreateNode = ({ node, actions, getNode }, pluginOptions) => {
 
     const tagSlugs = node.frontmatter.tags.map(
       tag => {
+        const shouldPrefix = slugAndLang.langKey !== options.langKeyDefault || options.prefixDefault;
         return {
           tag,
-          link: `/${slugAndLang.langKey}${options.tagsUrl}${_.kebabCase(tag)}/`
+          link: `${shouldPrefix ? '/' + slugAndLang.langKey : ''}${options.tagsUrl}${_.kebabCase(tag)}/`
         };
       }
     );
