@@ -3,6 +3,7 @@ import {defaultOptions} from './defaultOptions';
 import path from 'path';
 import {logError} from './logError';
 import R from 'ramda';
+import { addLangKeyToSlug } from 'ptz-i18n';
 
 const createPages = ({ graphql, actions }, pluginOptions) => {
   const { createPage } = actions;
@@ -33,10 +34,9 @@ const createPages = ({ graphql, actions }, pluginOptions) => {
             .filter(tag => tag && tag !== '');
   
           tags.forEach(tag => {
-            const shouldPrefix = langKey !== options.langKeyDefault || options.prefixDefault;  
-            const tagPath = `${shouldPrefix ? '/' + langKey : ''}${options.tagsUrl}${_.kebabCase(tag)}/`;
+            const tagPath = `${options.tagsUrl}${_.kebabCase(tag)}/`;
             createPage({
-              path: tagPath,
+              path: addLangKeyToSlug(tagPath, langKey, options),
               component: tagPage,
               context: {
                 tag,

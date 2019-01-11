@@ -39,10 +39,9 @@ var onCreateNode = function onCreateNode(_ref, pluginOptions) {
     var slugAndLang = (0, _ptzI18n.getSlugAndLang)(options, node.fileAbsolutePath);
 
     var tagSlugs = node.frontmatter.tags.map(function (tag) {
-      var shouldPrefix = slugAndLang.langKey !== options.langKeyDefault || options.prefixDefault;
       return {
         tag: tag,
-        link: '' + (shouldPrefix ? '/' + slugAndLang.langKey : '') + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/'
+        link: (0, _ptzI18n.addLangKeyToSlug)('' + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/', slugAndLang.langKey, options)
       };
     });
     createNodeField({ node: node, name: 'tagSlugs', value: tagSlugs });

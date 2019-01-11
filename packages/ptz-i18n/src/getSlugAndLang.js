@@ -1,4 +1,5 @@
 import { compose, curry, isNil, head, not, startsWith, endsWith } from 'ramda';
+import { addLangKeyToSlug } from './index';
 
 const defaultPagesPaths = ['/src/pages/'];
 
@@ -36,11 +37,8 @@ const getSlugAndLang = curry((options, fileAbsolutePath) => {
     const langKeyDefault = getLangKeyDefault(options);
     const fileName = filePath.split('.');
     const langKey = fileName.length === 3 ? fileName[1] : langKeyDefault;
-    const shouldPrefix = langKey !== options.langKeyDefault || options.prefixDefault;
-    const slug = addSlash(
-      (shouldPrefix && fileName.length === 3 ? langKey : '') +
-        addSlash(fileName[0].replace('index', ''))
-    );
+    const title = addSlash(fileName[0].replace('index', '') );
+    const slug = fileName.length === 3 ? addLangKeyToSlug(title, langKey, options) : title;
 
     return {
       slug,
