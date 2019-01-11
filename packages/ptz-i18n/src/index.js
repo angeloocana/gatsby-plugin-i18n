@@ -23,6 +23,19 @@ const nPaths = url => (url.match(/\//g) || []).length - 1;
 const isHomePage = url => nPaths(url) <= 1;
 
 /**
+ * Add lang to slug
+ * @param {String} slug  Slug to add lang
+ * @param {String} langKey langKey to add
+ * @param {{langKeyDefault: string, prefixDefault: boolean }} options prefixDefault: boolean indicating whether the the urls for the default land should be prefix or not
+ * @returns {String} new slug
+ */
+const addLangKeyToSlug = curry((slug, langKey, options) => {
+  return langKey !== options.langKeyDefault || options.prefixDefault
+    ? `/${langKey}${slug}`
+    : `${slug}`;
+});
+
+/**
  * Get url to the language
  * @param {String} homeLink  link for the home page
  * @param {String} url  browser url
@@ -63,6 +76,7 @@ const getI18nBase = curry(
 );
 
 export {
+  addLangKeyToSlug,
   isHomePage,
   isInPagesPaths,
   getBrowserLanguage,

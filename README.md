@@ -133,7 +133,7 @@ lanKey to use when no lanKey specified.
   You can set a **postPage** component and a **query** to get the pages.
 
 * **langKeyForNull:**
-  lanKey added to page context and graphql when no lanKey specified. Default: **any**.
+  lanKey added to page context and graphql when no langKey specified. Default: **any**.
 
 * **pagesPaths:**
    If you are not using just `/src/pages/` folder, you can add an array with the folders your are using:
@@ -146,6 +146,17 @@ lanKey to use when no lanKey specified.
           pagesPaths: [ '/my/custom/pages/folder1', /my/custom/pages/folder2/ ]
     }
    ```
+
+* **prefixDefault:**
+
+  **true**: add langKey on all pages, including default
+
+  **false**: omit langKey in url when page lang is the default. 
+    Ex: when `langKeyDefault` is `en`, `blog/first-post.en.md` and `blog/first-post.pt.md` will have the following urls:
+    - `/blog/first-post` 
+    - `/pt/blog/first-post`
+
+  Default: **true**
      
    
 ## Finally

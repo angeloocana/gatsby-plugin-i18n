@@ -23,6 +23,8 @@ var _ramda = require('ramda');
 
 var _ramda2 = _interopRequireDefault(_ramda);
 
+var _ptzI18n = require('ptz-i18n');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createPages = function createPages(_ref, pluginOptions) {
@@ -53,9 +55,9 @@ var createPages = function createPages(_ref, pluginOptions) {
           });
 
           tags.forEach(function (tag) {
-            var tagPath = '/' + langKey + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/';
+            var tagPath = '' + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/';
             createPage({
-              path: tagPath,
+              path: (0, _ptzI18n.addLangKeyToSlug)(tagPath, langKey, options),
               component: tagPage,
               context: {
                 tag: tag,

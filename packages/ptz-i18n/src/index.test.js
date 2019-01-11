@@ -1,4 +1,5 @@
 import {
+  addLangKeyToSlug,
   getLangs,
   getUrlForLang,
   getI18nBase,
@@ -7,6 +8,27 @@ import {
 import * as assert from 'ptz-assert';
 
 describe('langs', () => {
+  describe('addLangKeyToSlug', () => {
+    it('should add lang key to slug', () => {
+      const slug = '/about/';
+      const langKey = 'en';
+      const options = {};
+      assert.equal(addLangKeyToSlug(slug, langKey, options), '/en/about/');
+    });
+    it('should omit the lang key in the slug when prefixDefault is false', () => {
+      const slug = '/about/';
+      const langKey = 'en';
+      const options = {langKeyDefault: 'en', prefixDefault: false};
+      assert.equal(addLangKeyToSlug(slug, langKey, options), '/about/');
+    });
+    it('should add the lang key in the slug when prefixDefault is true', () => {
+      const slug = '/about/';
+      const langKey = 'en';
+      const options = {langKeyDefault: 'en', prefixDefault: true};
+      assert.equal(addLangKeyToSlug(slug, langKey, options), '/en/about/');
+    });
+  });
+
   describe('getUrlForLang', () => {
     it('/ & en => /en/', () => {
       const url = '/';

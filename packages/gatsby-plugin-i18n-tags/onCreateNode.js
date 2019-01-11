@@ -41,7 +41,7 @@ var onCreateNode = function onCreateNode(_ref, pluginOptions) {
     var tagSlugs = node.frontmatter.tags.map(function (tag) {
       return {
         tag: tag,
-        link: '/' + slugAndLang.langKey + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/'
+        link: (0, _ptzI18n.addLangKeyToSlug)('' + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/', slugAndLang.langKey, options)
       };
     });
     createNodeField({ node: node, name: 'tagSlugs', value: tagSlugs });

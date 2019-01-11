@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import {defaultOptions} from './defaultOptions';
-import { getSlugAndLang } from 'ptz-i18n';
+import { addLangKeyToSlug, getSlugAndLang } from 'ptz-i18n';
 
 /**
  * Add custom url pathname for blog posts.
@@ -26,7 +26,7 @@ const onCreateNode = ({ node, actions, getNode }, pluginOptions) => {
       tag => {
         return {
           tag,
-          link: `/${slugAndLang.langKey}${options.tagsUrl}${_.kebabCase(tag)}/`
+          link: addLangKeyToSlug(`${options.tagsUrl}${_.kebabCase(tag)}/`, slugAndLang.langKey, options)
         };
       }
     );
