@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-i18n",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "description": "Multi language feature for Gatsby",
   "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n#readme",
   "scripts": {
@@ -25,8 +25,8 @@
   "license": "MIT",
   "dependencies": {
     "folktale": "^2.0.1",
-    "graphql": "^0.11.7",
-    "ptz-i18n": "^0.3.0"
+    "ptz-i18n": "^1.0.0",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
