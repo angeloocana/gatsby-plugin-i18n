@@ -75,12 +75,12 @@ Include the plugin in your `gatsby-config.js` file.
 // Add to gatsby-config.js
 plugins: [
   {
-      resolve: 'gatsby-plugin-i18n',
-      options: {        
-        langKeyDefault: 'en',
-        useLangKeyLayout: false
-      }
+    resolve: 'gatsby-plugin-i18n',
+    options: {        
+      langKeyDefault: 'en',
+      useLangKeyLayout: false
     }
+  }
 ]
 ```
 
@@ -89,29 +89,29 @@ plugins: [
 // Add to gatsby-config.js
 plugins: [
   {
-      resolve: 'gatsby-plugin-i18n',
-      options: {        
-        langKeyDefault: 'en',
-        useLangKeyLayout: false,
-        markdownRemark: {
-          postPage: 'src/templates/blog-post.js',
-          query: `
-          {
-              allMarkdownRemark {
-                  edges {
-                  node {
-                      fields {
-                      slug,
-                      langKey
-                      }
-                  }
-                  }
+    resolve: 'gatsby-plugin-i18n',
+    options: {        
+      langKeyDefault: 'en',
+      useLangKeyLayout: false,
+      markdownRemark: {
+        postPage: 'src/templates/blog-post.js',
+        query: `
+        {
+          allMarkdownRemark {
+            edges {
+              node {
+                fields {
+                  slug,
+                  langKey
+                }
               }
+            }
           }
-          `
         }
+        `
       }
     }
+  }
 ]
 ```
 
@@ -138,13 +138,16 @@ lanKey to use when no lanKey specified.
 * **pagesPaths:**
    If you are not using just `/src/pages/` folder, you can add an array with the folders your are using:
    ```
-    plugins:{
+    plugins:[
       //... other plugins
-      resolve: 'gatsby-plugin-i18n',
+      {
+        resolve: 'gatsby-plugin-i18n',
         options: {        
           //.. other options
           pagesPaths: [ '/my/custom/pages/folder1', /my/custom/pages/folder2/ ]
-    }
+        }
+      }
+    ]
    ```
 
 * **prefixDefault:**

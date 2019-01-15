@@ -24,3 +24,6 @@ packages/gatsby-plugin-i18n/onCreateNode.test.js
 
 packages/gatsby-plugin-i18n/onCreatePage.js
 packages/gatsby-plugin-i18n/onCreatePage.test.js
+
+lerna-debug.log
+.DS_Store
