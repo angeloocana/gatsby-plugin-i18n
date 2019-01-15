@@ -138,7 +138,7 @@ lanKey to use when no lanKey specified.
 * **pagesPaths:**
    If you are not using just `/src/pages/` folder, you can add an array with the folders your are using:
    ```
-    plugins:[
+    plugins: [
       //... other plugins
       {
         resolve: 'gatsby-plugin-i18n',
