@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-i18n",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "description": "Multi language feature for Gatsby",
   "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n#readme",
   "scripts": {
@@ -26,13 +26,13 @@
   "dependencies": {
     "folktale": "^2.0.1",
     "graphql": "^0.11.7",
-    "ptz-i18n": "^0.3.0"
+    "ptz-i18n": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^8.0.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.7.0",
     "codecov": "^3.0.0",
     "eslint": "^4.8.0",
     "eslint-config-standard": "^10.2.1",

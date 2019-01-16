@@ -1,5 +1,16 @@
 ## master
 
+## 1.0.0 (January 15, 2017)
+* Add **prefixDefault** prop
+  **true**: add langKey on all pages, including default
+
+  **false**: omit langKey in url when page lang is the default. 
+    Ex: when `langKeyDefault` is `en`, `blog/first-post.en.md` and `blog/first-post.pt.md` will have the following urls:
+    - `/blog/first-post` 
+    - `/pt/blog/first-post`
+
+  Default: **true**
+
 ## 0.4.2 (April 04, 2018)
 
 * Fix 404 page. Thanks @ChrisBoon ! https://github.com/angeloocana/gatsby-plugin-i18n/pull/37

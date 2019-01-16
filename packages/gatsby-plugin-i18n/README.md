@@ -40,16 +40,26 @@ Websites built with Gatsby i18n:
 * [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
 * [Imagine Clarity](https://imagineclarity.com)
 
+
 ## Starters
 
 [Docs](https://www.gatsbyjs.org/docs/gatsby-starters/)
-  * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com), features:
+  * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com), features:
     - automatic browser-language detection and redirection
     - integration with react-intl `FormattedMessage` with translation keys
     - custom layout and pages per language
     - language switcher component
     - dev mode with HMR
     - build deployed to Netlify
+
+
+## Packages
+
+  * [gatsby-plugin-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n)
+  * [gatsby-plugin-i18n-readnext](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-readnext)
+  * [gatsby-plugin-i18n-tags](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-tags)
+  * [ptz-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/ptz-i18n)
+
 
 ## Install
 ```bash
@@ -123,7 +133,7 @@ lanKey to use when no lanKey specified.
   You can set a **postPage** component and a **query** to get the pages.
 
 * **langKeyForNull:**
-  lanKey added to page context and graphql when no lanKey specified. Default: **any**.
+  lanKey added to page context and graphql when no langKey specified. Default: **any**.
 
 * **pagesPaths:**
    If you are not using just `/src/pages/` folder, you can add an array with the folders your are using:
@@ -136,6 +146,17 @@ lanKey to use when no lanKey specified.
           pagesPaths: [ '/my/custom/pages/folder1', /my/custom/pages/folder2/ ]
     }
    ```
+
+* **prefixDefault:**
+
+  **true**: add langKey on all pages, including default
+
+  **false**: omit langKey in url when page lang is the default. 
+    Ex: when `langKeyDefault` is `en`, `blog/first-post.en.md` and `blog/first-post.pt.md` will have the following urls:
+    - `/blog/first-post` 
+    - `/pt/blog/first-post`
+
+  Default: **true**
      
    
 ## Finally
