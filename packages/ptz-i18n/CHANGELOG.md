@@ -1,5 +1,16 @@
 ## master
 
+## 1.0.0 (January 15, 2017)
+* Add **prefixDefault** prop
+  **true**: add langKey on all pages, including default
+
+  **false**: omit langKey in url when page lang is the default. 
+    Ex: when `langKeyDefault` is `en`, `blog/first-post.en.md` and `blog/first-post.pt.md` will have the following urls:
+    - `/blog/first-post` 
+    - `/pt/blog/first-post`
+
+  Default: **true**
+
 ## 0.4.0 (December 03, 2017)
 
 * Add redirectTo prop to return obj from getSlugAndLang.
