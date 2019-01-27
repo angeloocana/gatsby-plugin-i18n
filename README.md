@@ -35,10 +35,12 @@ Google! Google needs different URLs to crawl and render your pages for each lang
 ## Showcase
 
 Websites built with Gatsby i18n:
+* [https://www.hugomagalhaes.com](https://www.hugomagalhaes.com)[(source)](https://github.com/hugomn/hugomagalhaes.com) *Gatsby v2*
 * [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
 * [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
 * [Imagine Clarity](https://imagineclarity.com)
 
+Feel free to add your project to the list, we would love to see what you are building!
 
 ## Starters
 
