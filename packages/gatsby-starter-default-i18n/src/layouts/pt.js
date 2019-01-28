@@ -1,5 +1,4 @@
 import React from 'react';
-import graphql from 'graphql';
 import Layout from './index';
 import { addLocaleData } from 'react-intl';
 
@@ -14,16 +13,3 @@ export default (props) => (
     {...props}
     i18nMessages={messages}
   />);
-
-export const pageQuery = graphql`
-  query LayoutPt {
-    site {
-      siteMetadata {
-        languages {
-          defaultLangKey
-          langs
-        }      
-      }
-    }
-  }
-`;

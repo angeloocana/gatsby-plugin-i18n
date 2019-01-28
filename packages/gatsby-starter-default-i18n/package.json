@@ -4,14 +4,15 @@
   "version": "1.0.0",
   "author": "angeloocana.com",
   "dependencies": {
-    "gatsby": "^2.0.91",
-    "gatsby-link": "^1.6.21",
+    "gatsby": "^2.0.102",
+    "gatsby-link": "^2.0.9",
     "gatsby-plugin-i18n": "^1.0.1",
-    "gatsby-plugin-react-helmet": "^1.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.5",
     "intl": "^1.2.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-intl": "^2.4.0",
+    "react-helmet": "^5.2.0",
+    "react-intl": "^2.8.0",
     "react-router-dom": "^4.3.1"
   },
   "keywords": [
@@ -29,8 +30,8 @@
   },
   "devDependencies": {
     "codecov": "^3.0.0",
-    "jest": "^22.0.4",
-    "prettier": "^1.7.4"
+    "jest": "^24.0.0",
+    "prettier": "^1.16.1"
   },
   "jest": {
     "testPathIgnorePatterns": [
