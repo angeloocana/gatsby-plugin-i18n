@@ -4,12 +4,15 @@
   "version": "1.0.0",
   "author": "angeloocana.com",
   "dependencies": {
-    "gatsby": "^1.9.63",
+    "gatsby": "^2.0.91",
     "gatsby-link": "^1.6.21",
-    "gatsby-plugin-i18n": "^0.3.3",
+    "gatsby-plugin-i18n": "^1.0.1",
     "gatsby-plugin-react-helmet": "^1.0.5",
     "intl": "^1.2.5",
-    "react-intl": "^2.4.0"
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-intl": "^2.4.0",
+    "react-router-dom": "^4.3.1"
   },
   "keywords": [
     "gatsby"

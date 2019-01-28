@@ -1,6 +1,10 @@
 ## master
 
-## 1.0.0 (January 15, 2017)
+## 1.0.1 (January 27, 2019)
+
+* Fix warnings generated for markup pages.
+
+## 1.0.0 (January 15, 2019)
 * Add **prefixDefault** prop
   **true**: add langKey on all pages, including default
 

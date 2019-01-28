@@ -12,7 +12,8 @@ module.exports = {
       options: {
         langKeyForNull: 'any',
         langKeyDefault: languages.defaultLangKey,
-        useLangKeyLayout: true
+        useLangKeyLayout: true,
+        prefixDefault: false,
       }
     }],
 }
