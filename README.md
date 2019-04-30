@@ -39,6 +39,7 @@ Websites built with Gatsby i18n:
 * [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
 * [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
 * [Imagine Clarity](https://imagineclarity.com)
+* [Peintagone](https://www.peintagone.be)
 
 Feel free to add your project to the list, we would love to see what you are building!
 
