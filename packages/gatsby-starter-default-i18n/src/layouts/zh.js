@@ -2,11 +2,11 @@ import React from 'react';
 import Layout from './index';
 import { addLocaleData } from 'react-intl';
 
-import messages from '../data/messages/pt';
-import pt from 'react-intl/locale-data/pt';
-import 'intl/locale-data/jsonp/pt';
+import messages from '../data/messages/zh';
+import zh from 'react-intl/locale-data/zh';
+import 'intl/locale-data/jsonp/zh';
 
-addLocaleData(pt);
+addLocaleData(zh);
 
 export default (props) => (
   <Layout
