@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
-@import 'bulma/css/bulma.css'
+@import '~bulma/css/bulma.css'
 
 html {
   font-family: sans-serif;
@@ -201,7 +201,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: PT Sans, serif;
+  font-family: PT Sans, serif !important;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -635,7 +635,7 @@ pre tt:after {
 }
 
 .header-logo {
-  background: red;
+  background: #F70303;
   border-radius: 0px 0px 5px 5px;
   width: 200px;
   height: 100px;
@@ -666,4 +666,29 @@ pre tt:after {
 .nav-menu a {
   text-decoration: none;
   color: white;
+}
+
+.hamburger {
+    top: 55px;
+    right: 20px;
+    position: relative;
+    display: inline-block;
+    width: 1.25em;
+    height: 0.8em;
+    margin-right: 0.3em;
+    border-top: 0.3em solid #fff;
+    border-bottom: 0.3em solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 500px;
+}
+
+.dropdown-menu.dropdown-right { left: calc(-250% + 4px); }
+
+.button {
+  background: #F70303 !important;
+  color: white !important;
+  border: none !important;
+  font-weight: bold;
 }
