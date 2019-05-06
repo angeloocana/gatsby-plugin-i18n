@@ -8,19 +8,14 @@ const SelectLanguage = (props) => {
     <Link to={lang.link} key={lang.langKey} style={{
       color: 'white'
     }}>
-      <li selected={lang.selected}>
+      <li className="language-selector" selected={lang.selected}>
         {lang.langKey}
       </li>
     </Link>
   );
 
   return (
-    <section>
-      <header style={{
-        color: 'white'
-      }}>
-        <FormattedMessage id="selectLanguage" />
-      </header>
+    <section style={{float: 'right'}}>
       <ul>
         {links}
       </ul>

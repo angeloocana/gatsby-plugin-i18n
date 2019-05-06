@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "angeloocana.com",
   "dependencies": {
+    "bulma": "^0.7.4",
     "gatsby": "^2.0.102",
     "gatsby-link": "^2.0.9",
     "gatsby-plugin-i18n": "^1.0.1",
