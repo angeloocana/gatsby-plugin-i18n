@@ -2,7 +2,7 @@
   "name": "gatsby-plugin-i18n-readnext",
   "version": "0.0.4",
   "description": "Read Next feature for multi language gatsby projects",
-  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n-readnext#readme",
+  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-readnext#readme",
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix ./src",
     "prebuild": "yarn run lint",
@@ -12,9 +12,10 @@
     "test": "jest",
     "coverage": "codecov"
   },
-  "respository": {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/angeloocana/gatsby-plugin-i18n-readnext"
+    "url": "https://github.com/angeloocana/gatsby-plugin-i18n.git",
+    "directory": "packages/gatsby-plugin-i18n-readnext"
   },
   "keywords": [
     "gatsby",
@@ -56,7 +57,6 @@
       "transform-object-rest-spread"
     ]
   },
-  "readme": "README.md",
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true

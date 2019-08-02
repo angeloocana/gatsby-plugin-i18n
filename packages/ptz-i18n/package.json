@@ -2,7 +2,7 @@
   "name": "ptz-i18n",
   "version": "1.0.0",
   "description": "I18n functions to be used with Gatsby projects.",
-  "homepage": "https://github.com/angeloocana/ptz-i18n#readme",
+  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/ptz-i18n#readme",
   "main": "dist/index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix ./src",
@@ -15,9 +15,10 @@
     "test:watch": "jest --watch",
     "test:open": "opn ./coverage/lcov-report/index.html"
   },
-  "respository": {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/angeloocana/ptz-i18n"
+    "url": "https://github.com/angeloocana/gatsby-plugin-i18n.git",
+    "directory": "packages/ptz-i18n"
   },
   "keywords": [
     "gatsby",
@@ -59,7 +60,6 @@
       "spec.js,test.js"
     ]
   },
-  "readme": "README.md",
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
