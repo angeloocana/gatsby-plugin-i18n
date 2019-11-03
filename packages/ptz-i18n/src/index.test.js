@@ -1,13 +1,24 @@
-import {
-  addLangKeyToSlug,
-  getLangs,
-  getUrlForLang,
-  getI18nBase,
-  isHomePage
-} from './index';
+import { addLangKeyToSlug, getLangs, getUrlForLang, getI18nBase, isHomePage, nPaths } from './index';
 import * as assert from 'ptz-assert';
 
 describe('langs', () => {
+  describe('nPaths', () => {
+    it('returns the correct number of paths', () => {
+      assert.equal(nPaths('/en/contact/'), 2);
+    });
+    it('one path one slash', () => {
+      assert.equal(nPaths('/en'), 1);
+    });
+    it('one path', () => {
+      assert.equal(nPaths('/en/'), 1);
+    });
+    it('no paths', () => {
+      assert.equal(nPaths('/'), 0);
+    });
+    it('empty path', () => {
+      assert.equal(nPaths(''), 0);
+    });
+  });
   describe('addLangKeyToSlug', () => {
     it('should add lang key to slug', () => {
       const slug = '/about/';
@@ -18,13 +29,13 @@ describe('langs', () => {
     it('should omit the lang key in the slug when prefixDefault is false', () => {
       const slug = '/about/';
       const langKey = 'en';
-      const options = {langKeyDefault: 'en', prefixDefault: false};
+      const options = { langKeyDefault: 'en', prefixDefault: false };
       assert.equal(addLangKeyToSlug(slug, langKey, options), '/about/');
     });
     it('should add the lang key in the slug when prefixDefault is true', () => {
       const slug = '/about/';
       const langKey = 'en';
-      const options = {langKeyDefault: 'en', prefixDefault: true};
+      const options = { langKeyDefault: 'en', prefixDefault: true };
       assert.equal(addLangKeyToSlug(slug, langKey, options), '/en/about/');
     });
   });
@@ -73,18 +84,21 @@ describe('langs', () => {
       const langs = getLangs(['en', 'fr', 'pt'], 'en', getUrlForLang('/en/', '/'));
       const expected = [
         {
-          'langKey': 'en',
-          'link': '/en/',
-          'selected': true
-        }, {
-          'langKey': 'fr',
-          'link': '/fr/',
-          'selected': false
-        }, {
-          'langKey': 'pt',
-          'link': '/pt/',
-          'selected': false
-        }];
+          langKey: 'en',
+          link: '/en/',
+          selected: true
+        },
+        {
+          langKey: 'fr',
+          link: '/fr/',
+          selected: false
+        },
+        {
+          langKey: 'pt',
+          link: '/pt/',
+          selected: false
+        }
+      ];
       assert.deepEqual(langs, expected);
     });
   });
@@ -113,6 +127,7 @@ describe('langs', () => {
   });
 
   describe('isHomePage', () => {
+    const langs = ['en', 'pt', 'fr'];
     it('/ true', () => {
       assert.ok(isHomePage('/'));
     });
@@ -125,6 +140,14 @@ describe('langs', () => {
     it('/en/tags/ false', () => {
       assert.notOk(isHomePage('/en/tags/'));
     });
+    it('/contact/ !prefixDefault false', () => {
+      assert.notOk(isHomePage('/contact/', false, langs));
+    });
+    it('/contact/ !prefixDefault true', () => {
+      assert.notOk(isHomePage('/contact/', true, langs));
+    });
+    it('/en/ !prefixDefault true', () => {
+      assert.ok(isHomePage('/en/', false, langs));
+    });
   });
 });
-
