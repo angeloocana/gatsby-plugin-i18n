@@ -118,7 +118,7 @@ plugins: [
 ### All Options
 
 * **langKeyDefault:**
-lanKey to use when no lanKey specified.
+langKey to use when no langKey specified.
 
 * **useLangKeyLayout:**
 
@@ -133,7 +133,7 @@ lanKey to use when no lanKey specified.
   You can set a **postPage** component and a **query** to get the pages.
 
 * **langKeyForNull:**
-  lanKey added to page context and graphql when no langKey specified. Default: **any**.
+  langKey added to page context and graphql when no langKey specified. Default: **any**.
 
 * **pagesPaths:**
    If you are not using just `/src/pages/` folder, you can add an array with the folders your are using:
