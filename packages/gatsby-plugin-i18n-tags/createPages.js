@@ -1,61 +1,58 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createPages = undefined;
+exports.createPages = void 0;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _lodash = _interopRequireDefault(require("lodash"));
 
-var _lodash = require('lodash');
+var _defaultOptions = require("./defaultOptions");
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _path = _interopRequireDefault(require("path"));
 
-var _defaultOptions = require('./defaultOptions');
+var _logError = require("./logError");
 
-var _path = require('path');
+var _ramda = _interopRequireDefault(require("ramda"));
 
-var _path2 = _interopRequireDefault(_path);
+var _ptzI18n = require("ptz-i18n");
 
-var _logError = require('./logError');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _ramda = require('ramda');
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-var _ramda2 = _interopRequireDefault(_ramda);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var _ptzI18n = require('ptz-i18n');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var createPages = function createPages(_ref, pluginOptions) {
   var graphql = _ref.graphql,
       actions = _ref.actions;
   var createPage = actions.createPage;
 
-  var options = _extends({}, _defaultOptions.defaultOptions, pluginOptions);
+  var options = _objectSpread({}, _defaultOptions.defaultOptions, {}, pluginOptions);
 
   return new Promise(function (resolve, reject) {
-    var tagPage = _path2.default.resolve(options.tagPage);
+    var tagPage = _path["default"].resolve(options.tagPage);
+
     graphql(options.query).then(function (result) {
       try {
-
         if (result.errors) {
           throw result.errors;
         }
 
-        var langTags = result.data.allMarkdownRemark.edges.filter(_ramda2.default.path(['node', 'fields', 'langKey'])).reduce(function (tags, edge) {
+        var langTags = result.data.allMarkdownRemark.edges.filter(_ramda["default"].path(['node', 'fields', 'langKey'])).reduce(function (tags, edge) {
           var langKey = edge.node.fields.langKey;
           tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
           return tags;
         }, {});
-
         Object.keys(langTags).forEach(function (langKey) {
-          var tags = _lodash2.default.uniq(langTags[langKey]).filter(function (tag) {
+          var tags = _lodash["default"].uniq(langTags[langKey]).filter(function (tag) {
             return tag && tag !== '';
           });
 
           tags.forEach(function (tag) {
-            var tagPath = '' + options.tagsUrl + _lodash2.default.kebabCase(tag) + '/';
+            var tagPath = "".concat(options.tagsUrl).concat(_lodash["default"].kebabCase(tag), "/");
             createPage({
               path: (0, _ptzI18n.addLangKeyToSlug)(tagPath, langKey, options),
               component: tagPage,
@@ -66,7 +63,6 @@ var createPages = function createPages(_ref, pluginOptions) {
             });
           });
         });
-
         resolve();
       } catch (e) {
         (0, _logError.logError)(e);

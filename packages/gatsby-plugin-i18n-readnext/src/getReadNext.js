@@ -61,7 +61,7 @@ const getReadNextSelected = (nPosts, post, posts) => {
     : R.filter(p =>
       isNotNil(p) &&
       R.contains(p.fields.slug, post.frontmatter.readNext)
-      , posts);
+    , posts);
 };
 
 /**

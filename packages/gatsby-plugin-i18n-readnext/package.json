@@ -25,35 +25,36 @@
   "author": "angeloocana.com",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "ptz-i18n": "^0.1.0",
+    "bluebird": "^3.7.2",
+    "ptz-i18n": "^1.0.0",
     "ptz-math": "^1.1.0",
-    "ramda": "^0.24.1"
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "codecov": "^3.0.0",
-    "eslint": "^4.4.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-config-standard-react": "^5.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.0.2",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "jest": "^22.0.4",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-eslint": "^10.0.3",
+    "codecov": "^3.6.1",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
     "ptz-assert": "^1.6.8"
   },
   "babel": {
     "presets": [
-      "env"
+      "@babel/preset-env"
     ],
     "plugins": [
-      "transform-object-rest-spread"
+      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "readme": "README.md",

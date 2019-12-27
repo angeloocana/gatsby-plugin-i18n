@@ -12,8 +12,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
-    "react-intl": "^2.8.0",
-    "react-router-dom": "^4.3.1"
+    "react-intl": "^3.9.3",
+    "react-router-dom": "^5.1.2"
   },
   "keywords": [
     "gatsby"
@@ -29,7 +29,8 @@
     "coverage": "codecov"
   },
   "devDependencies": {
-    "codecov": "^3.0.0",
+    "codecov": "^3.6.1",
+    "intl-pluralrules": "^1.1.1",
     "jest": "^24.0.0",
     "prettier": "^1.16.1"
   },

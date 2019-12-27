@@ -8,6 +8,17 @@ import { IntlProvider } from 'react-intl';
 import 'intl';
 import './index.css'
 
+if (!Intl.PluralRules) {
+  require('intl-pluralrules')
+}
+
+if (!Intl.RelativeTimeFormat) {
+  require('@formatjs/intl-relativetimeformat/polyfill')
+  require('@formatjs/intl-relativetimeformat/dist/locale-data/en') // Add locale data for en
+  require('@formatjs/intl-relativetimeformat/dist/locale-data/pt') // Add locale data for pt
+}
+
+
 const Layout = ({ children, location, i18nMessages }) => {
   return (
     <StaticQuery
