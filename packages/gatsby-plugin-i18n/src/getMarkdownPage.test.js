@@ -27,7 +27,8 @@ describe('getMarkdownPage', () => {
       component: postPage,
       context: {
         langKey,
-        path: slug
+        path: slug,
+        slug,
       },
       layout: langKey,
       path: slug
@@ -63,7 +64,8 @@ describe('getMarkdownPage', () => {
       component: postPage,
       context: {
         langKey,
-        path: slug
+        path: slug,
+        slug,
       },
       layout: null,
       path: slug
