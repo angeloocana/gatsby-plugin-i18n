@@ -3,19 +3,20 @@ import { isInPagesPaths, getSlugAndLang } from 'ptz-i18n';
 import Result from 'folktale/result';
 import { isNil, chain } from 'ramda';
 
-const getValidFile = filePath => 
-  isNil(filePath)
-    ? Result.Error('No file name')
-    : Result.Ok(filePath);
+const getValidFile = filePath =>
+  isNil(filePath) ? Result.Error('No file name') : Result.Ok(filePath);
 
 const getFilePath = node => {
-  switch(node.internal.type){
-  case 'File': return getValidFile(node.absolutePath);
-  case 'MarkdownRemark': return getValidFile(node.fileAbsolutePath);
-  default: return Result.Error('Skiping file type: ' + node.internal.type);
+  switch (node.internal.type) {
+  case 'File':
+    return getValidFile(node.absolutePath);
+  case 'MarkdownRemark':
+  case 'Mdx':
+    return getValidFile(node.fileAbsolutePath);
+  default:
+    return Result.Error('Skiping file type: ' + node.internal.type);
   }
 };
-
 
 /**
  * Add custom url pathname for blog posts.
@@ -24,7 +25,6 @@ const getFilePath = node => {
  * @returns {void} void
  */
 const onCreateNode = ({ node, actions }, pluginOptions) => {
-
   const options = {
     ...defaultOptions,
     ...pluginOptions
@@ -33,8 +33,7 @@ const onCreateNode = ({ node, actions }, pluginOptions) => {
   return getFilePath(node)
     .map(filePath =>
       chain(isInPaths => {
-
-        if(isInPaths === false){
+        if (isInPaths === false) {
           return 'Skipping page, not in pagesPaths';
         }
 
@@ -42,7 +41,10 @@ const onCreateNode = ({ node, actions }, pluginOptions) => {
 
         const { createNodeField } = actions;
 
-        if(node.internal.type === 'MarkdownRemark'){
+        if (
+          node.internal.type === 'MarkdownRemark' ||
+          node.internal.type === 'Mdx'
+        ) {
           createNodeField({
             node,
             name: 'langKey',
@@ -62,7 +64,4 @@ const onCreateNode = ({ node, actions }, pluginOptions) => {
     .merge();
 };
 
-export {
-  onCreateNode
-};
-
+export { onCreateNode };
