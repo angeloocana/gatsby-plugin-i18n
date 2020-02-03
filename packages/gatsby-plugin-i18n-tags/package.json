@@ -2,7 +2,7 @@
   "name": "gatsby-plugin-i18n-tags",
   "version": "1.0.0",
   "description": "Multi language feature for Gatsby",
-  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n-tags#readme",
+  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-tags#readme",
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix ./src",
     "prebuild": "yarn run lint",
@@ -12,9 +12,10 @@
     "test": "jest",
     "coverage": "codecov"
   },
-  "respository": {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/angeloocana/gatsby-plugin-i18n-tags"
+    "url": "https://github.com/angeloocana/gatsby-plugin-i18n.git",
+    "directory": "packages/gatsby-plugin-i18n-tags"
   },
   "keywords": [
     "gatsby",
@@ -54,7 +55,6 @@
       "transform-object-rest-spread"
     ]
   },
-  "readme": "README.md",
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true

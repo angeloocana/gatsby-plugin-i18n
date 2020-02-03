@@ -2,7 +2,7 @@
   "name": "gatsby-plugin-i18n",
   "version": "1.0.1",
   "description": "Multi language feature for Gatsby",
-  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n#readme",
+  "homepage": "https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n#readme",
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix ./src",
     "prebuild": "yarn run lint",
@@ -12,9 +12,10 @@
     "coverage": "codecov",
     "test:open": "opn ./coverage/lcov-report/index.html"
   },
-  "respository": {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/angeloocana/gatsby-plugin-i18n"
+    "url": "https://github.com/angeloocana/gatsby-plugin-i18n.git",
+    "directory": "packages/gatsby-plugin-i18n"
   },
   "keywords": [
     "gatsby",
@@ -55,7 +56,6 @@
       "transform-object-rest-spread"
     ]
   },
-  "readme": "README.md",
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
