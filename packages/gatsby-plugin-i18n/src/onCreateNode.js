@@ -43,7 +43,7 @@ const onCreateNode = ({ node, actions }, pluginOptions) => {
 
         if (
           node.internal.type === 'MarkdownRemark' ||
-          node.internal.type === 'Mdx'
+          node.internal.type === "Mdx"
         ) {
           createNodeField({
             node,
