@@ -21,7 +21,8 @@ const createPages = ({ graphql, actions }, pluginOptions) => {
           throw result.errors;
         }
   
-        const langTags = result.data.allMarkdownRemark.edges
+        const resultData = result.data.allMarkdownRemark || result.data.allMdx;
+        const langTags = resultData.edges
           .filter(R.path(['node', 'fields', 'langKey']))
           .reduce((tags, edge) => {
             const langKey = edge.node.fields.langKey;
