@@ -9,68 +9,42 @@
 
 Hi Folks!
 
-Are you trying to build a multi language gatsby website?
+Are you trying to build a multi-language [Gatsby](https://gatsby.com) website? **We want to help you!**
 
-We want to help you! Please open an issue for help, suggestions or bugs.
+If you need additional help, feel free to open an issue, make a suggestion, or report a bug. Better yet, we would LOVE for you to [contribute](https://www.dataschool.io/how-to-contribute-on-github/) to this project and help us to help others.
 
-You can use this plugin with **react-intl**, **i18next**, or any other i18n library. This plugin do not translate messages, it just creates routes for each language, and you can use different layouts for each language if you want to.
+*Please note:*
 
-## How it works
+> Gatsby-Plugin-i18n can be safely used with **react-intl**, **i18next**, or any other i18n library.
 
-Name your files with .**langKey**.js and the url will be /**langKey**/path/fileName
+## Why use our plugin?
 
-Examples:
+Google! It's all about url routes. Google needs different URLs to crawl and render your pages for each language.
 
-file | url
--- | --
-src/pages/about.**en**.js | /**en**/about
-src/pages/about/index.**en**.js | /**en**/about
-src/pages/blog/gatsby-i18n.**pt**.md | /**pt**/blog/gatsby-i18n
-
-## Why?
-
-Google! Google needs different URLs to crawl and render your pages for each language.
-
-
-## Showcase
-
-Websites built with Gatsby i18n:
-* [hugomagalhaes.com](https://www.hugomagalhaes.com) [(source)](https://github.com/hugomn/hugomagalhaes.com) *Gatsby v2*
-* [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
-* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
-* [Imagine Clarity](https://imagineclarity.com)
-* [Peintagone](https://www.peintagone.be)
-
-Feel free to add your project to the list, we would love to see what you are building!
-
-## Starters
-
-[Docs](https://www.gatsbyjs.org/docs/gatsby-starters/)
-  * [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com), features:
-    - automatic browser-language detection and redirection
-    - integration with react-intl `FormattedMessage` with translation keys
-    - custom layout and pages per language
-    - language switcher component
-    - dev mode with HMR
-    - build deployed to Netlify
-
-
-## Packages
-
-  * [gatsby-plugin-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n)
-  * [gatsby-plugin-i18n-readnext](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-readnext)
-  * [gatsby-plugin-i18n-tags](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-tags)
-  * [ptz-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/ptz-i18n)
-
+> This plugin does not translate messages. Instead, it creates routes for each language. You can even use different layouts for each language if you would like.
 
 ## Install
 ```bash
   yarn add gatsby-plugin-i18n
 ```
 
+## How to use this plugin
 
-## How to use
 Include the plugin in your `gatsby-config.js` file.
+
+For each language you wish to include in your project:
+
+1. Create a root directory in your /src directory named after its related ```langKey``` E.g. ```/src/en/``` or ```/src/pt/```.
+2. Create a copy of your original ```/src``` contents and place them under the new ```/src/[langKey]/``` directory.
+3. For each file you wish to translate, rename the copied files, adding the ending, ```.**langKey**.js```.
+
+Examples:
+
+file | url
+-- | --
+src/en/pages/about.**en**.js | /**en**/about
+src/en/pages/about/index.**en**.js | /**en**/about
+src/pt/pages/blog/gatsby-i18n.**pt**.md | /**pt**/blog/gatsby-i18n
 
 ### Simple configuration example:
 ```javascript
@@ -117,6 +91,38 @@ plugins: [
 ]
 ```
 
+## Showcase
+
+Websites built with Gatsby i18n:
+
+* [hugomagalhaes.com](https://www.hugomagalhaes.com) [(source)](https://github.com/hugomn/hugomagalhaes.com) *Gatsby v2*
+* [angeloocana.com](https://angeloocana.com) [(source)](https://github.com/angeloocana/angeloocana)
+* [tic-tac-toe-ai.surge.sh](https://tic-tac-toe-ai.surge.sh) [(source)](https://github.com/angeloocana/tic-tac-toe-ai)
+* [Imagine Clarity](https://imagineclarity.com)
+* [Peintagone](https://www.peintagone.be)
+
+Feel free to add your project to the list, we would love to see what you are building!
+
+## Starters
+
+[Click here for several i18n Gatsby "starter" sites.](https://www.gatsbyjs.com/starters/?c=i18n)
+
+  * With our plugin: [gatsby-starter-default-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-starter-default-i18n) [DEMO](https://gatsby-starter-default-i18n.netlify.com), features:
+    - automatic browser-language detection and redirection
+    - integration with react-intl `FormattedMessage` with translation keys
+    - custom layout and pages per language
+    - language switcher component
+    - dev mode with HMR
+    - build deployed to Netlify
+
+
+## Packages
+
+  * [gatsby-plugin-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n)
+  * [gatsby-plugin-i18n-readnext](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-readnext)
+  * [gatsby-plugin-i18n-tags](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/gatsby-plugin-i18n-tags)
+  * [ptz-i18n](https://github.com/angeloocana/gatsby-plugin-i18n/tree/master/packages/ptz-i18n)
+
 ### All Options
 
 * **langKeyDefault:**
@@ -156,14 +162,14 @@ langKey to use when no langKey specified.
 
   **true**: add langKey on all pages, including default
 
-  **false**: omit langKey in url when page lang is the default. 
+  **false**: omit langKey in url when page lang is the default.
     Ex: when `langKeyDefault` is `en`, `blog/first-post.en.md` and `blog/first-post.pt.md` will have the following urls:
-    - `/blog/first-post` 
+    - `/blog/first-post`
     - `/pt/blog/first-post`
 
   Default: **true**
-     
-   
+
+
 ## Finally
 
 Go Gatsby!
